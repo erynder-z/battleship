@@ -1,45 +1,18 @@
-const shipTypes = [
-    {
-        id: 'carrier',
-        length: 5,
-        isHit: false,
-        isSunk: false,
-    },
-    {
-        id: 'battleship',
-        length: 4,
-        isHit: false,
-        isSunk: false,
-    },
-    {
-        id: 'cruiser',
-        length: 3,
-        isHit: false,
-        isSunk: false,
-    },
-    {
-        id: 'submarine',
-        length: 3,
-        isHit: false,
-        isSunk: false,
-    },
-    {
-        id: 'destroyer',
-        length: 2,
-        isHit: false,
-        isSunk: false,
-    },
-];
-
-const shipFactory = (type) => {
-    for (let i = 0; i < shipTypes.length; i++) {
-        const currentShip = shipTypes[i];
-        for (const property in currentShip) {
-            if (currentShip[property] === type) {
-                return currentShip;
-            }
-        }
+const shipFactory = (id, length, coordinates) => ({
+  id,
+  length,
+  coordinates,
+  hitbox: [],
+  hit(position) {
+    if (this.coordinates.includes(position)) {
+      this.hitbox.push(position);
     }
-};
+  },
+  isSunk() {
+    return !!(
+      this.hitbox.length >= 0 && this.hitbox.length === this.coordinates.length
+    );
+  },
+});
 
 module.exports = shipFactory;
