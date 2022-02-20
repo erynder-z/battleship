@@ -1,56 +1,40 @@
 const shipFactory = require('./ship');
 
-const mockCarrier = {
-    id: 'carrier',
-    length: 5,
-    isHit: false,
-    isSunk: false,
-};
+const mockBattleship = shipFactory('battleship', 4, ['A1', 'A2', 'A3', 'A4']);
 
-const mockBattleship = {
-    id: 'battleship',
-    length: 4,
-    isHit: false,
-    isSunk: false,
-};
+describe('ship has:', () => {
+  test('correct id:', () => {
+    expect(mockBattleship.id).toBe('battleship');
+  });
 
-const mockCruiser = {
-    id: 'cruiser',
-    length: 3,
-    isHit: false,
-    isSunk: false,
-};
+  test('correct length:', () => {
+    expect(mockBattleship.length).toBe(4);
+  });
 
-const mockSubmarine = {
-    id: 'submarine',
-    length: 3,
-    isHit: false,
-    isSunk: false,
-};
-
-const mockDestroyer = {
-    id: 'destroyer',
-    length: 2,
-    isHit: false,
-    isSunk: false,
-};
-
-test('create a carrier object', () => {
-    expect(shipFactory('carrier')).toMatchObject(mockCarrier);
+  test('correct coordinates:', () => {
+    expect(mockBattleship.coordinates).toEqual(['A1', 'A2', 'A3', 'A4']);
+  });
 });
 
-test('create a battleship object', () => {
-    expect(shipFactory('battleship')).toMatchObject(mockBattleship);
-});
+describe('ship can:', () => {
+  test('be missed:', () => {
+    mockBattleship.hit('A5');
+    expect(mockBattleship.hitbox).toEqual([]);
+  });
 
-test('create a cruiser object', () => {
-    expect(shipFactory('cruiser')).toMatchObject(mockCruiser);
-});
+  test('be hit:', () => {
+    mockBattleship.hit('A1');
+    expect(mockBattleship.hitbox).toEqual(['A1']);
+  });
 
-test('create a submarine object', () => {
-    expect(shipFactory('submarine')).toMatchObject(mockSubmarine);
-});
+  test('survive hits before sinking:', () => {
+    mockBattleship.hit('A2');
+    expect(mockBattleship.isSunk()).toBe(false);
+  });
 
-test('create a destroyer object', () => {
-    expect(shipFactory('destroyer')).toMatchObject(mockDestroyer);
+  test('be sunk:', () => {
+    mockBattleship.hit('A3');
+    mockBattleship.hit('A4');
+    expect(mockBattleship.isSunk()).toBe(true);
+  });
 });
