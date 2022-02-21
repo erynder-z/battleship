@@ -4,13 +4,13 @@ const shipFactory = (id, length, coordinates) => ({
   coordinates,
   hitbox: [],
   hit(position) {
-    if (this.coordinates.includes(position)) {
+    if (JSON.stringify(this.coordinates).includes(position)) {
       this.hitbox.push(position);
     }
   },
   isSunk() {
     return !!(
-      this.hitbox.length >= 0 && this.hitbox.length === this.coordinates.length
+      this.hitbox.length >= 0 && this.hitbox.length >= this.coordinates.length
     );
   },
 });

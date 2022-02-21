@@ -1,8 +1,13 @@
 const shipFactory = require('./ship');
 
-const mockBattleship = shipFactory('battleship', 4, [1, 2, 3, 4]);
+const mockBattleship = shipFactory('battleship', 4, [
+  [0, 1],
+  [0, 2],
+  [0, 3],
+  [0, 4],
+]);
 
-describe('ship has:', () => {
+describe('ship:', () => {
   test('correct id:', () => {
     expect(mockBattleship.id).toBe('battleship');
   });
@@ -12,29 +17,42 @@ describe('ship has:', () => {
   });
 
   test('correct coordinates:', () => {
-    expect(mockBattleship.coordinates).toEqual([1, 2, 3, 4]);
+    expect(mockBattleship.coordinates).toEqual([
+      [0, 1],
+      [0, 2],
+      [0, 3],
+      [0, 4],
+    ]);
   });
 });
 
-describe('ship can:', () => {
-  test('be missed:', () => {
-    mockBattleship.hit(5);
+describe('ship:', () => {
+  test('can be missed:', () => {
+    mockBattleship.hit([1, 1]);
     expect(mockBattleship.hitbox).toEqual([]);
   });
 
-  test('be hit:', () => {
-    mockBattleship.hit(1);
-    expect(mockBattleship.hitbox).toEqual([1]);
+  test('can be hit:', () => {
+    mockBattleship.hit([0, 1]);
+    expect(mockBattleship.hitbox).toEqual([[0, 1]]);
   });
 
-  test('survive hits before sinking:', () => {
-    mockBattleship.hit(2);
+  test('can survive hits before sinking:', () => {
+    mockBattleship.hit([0, 2]);
     expect(mockBattleship.isSunk()).toBe(false);
   });
 
+  test('hitbox registers correctly:', () => {
+    mockBattleship.hit([0, 3]);
+    expect(mockBattleship.hitbox).toEqual([
+      [0, 1],
+      [0, 2],
+      [0, 3],
+    ]);
+  });
+
   test('be sunk:', () => {
-    mockBattleship.hit(3);
-    mockBattleship.hit(4);
+    mockBattleship.hit([0, 4]);
     expect(mockBattleship.isSunk()).toBe(true);
   });
 });
