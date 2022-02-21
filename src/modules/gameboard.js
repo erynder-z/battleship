@@ -1,6 +1,6 @@
 const gameboardFactory = () => {
   // a two dimensional array
-  const gameboard = [];
+  const gameboard = {};
   const cols = 10;
   const rows = 10;
   for (let i = 0; i < cols; i++) {
@@ -14,6 +14,7 @@ const gameboardFactory = () => {
       });
     }
   }
+
   return gameboard;
 };
 module.exports = gameboardFactory;
