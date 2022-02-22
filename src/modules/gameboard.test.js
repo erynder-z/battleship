@@ -14,3 +14,16 @@ test('grid fields are objects with correct key-values', () => {
     horizontal: 4,
   });
 });
+
+mockGameboardEmpty.placeShip('battleship', 4, [
+  [0, 1],
+  [0, 2],
+  [0, 3],
+  [0, 4],
+]);
+
+const mockGameboardWithShip = mockGameboardEmpty;
+
+test('ships can be placed', () => {
+  expect(mockGameboardWithShip[0][1].occupied).toBe(true);
+});
