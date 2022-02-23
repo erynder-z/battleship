@@ -306,9 +306,10 @@ const getCoordinates = (id, alignment, position) => {
     },
   ];
 
+  const ship = id;
+  const align = alignment; // horizotal or vertical
+
   const checkPosition = () => {
-    const ship = id;
-    const align = alignment; // horizotal or vertical
     const selectedField = position; // [0, 1]
 
     for (let i = 0; i < illegalPositions.length; i++) {
@@ -318,10 +319,47 @@ const getCoordinates = (id, alignment, position) => {
         JSON.stringify(illegalPositions[i].positions).includes(selectedField)
       ) {
         console.log('illegal');
-        return;
+        return null;
       }
     }
     return selectedField;
+  };
+
+  const createPosition = () => {
+    let length;
+
+    fleet.forEach((item) => {
+      if (item.id === ship) {
+        length = item.length;
+      }
+    });
+
+    const createCoordinates = (() => {
+      if (validCoordinates[0] === null) {
+        return;
+      }
+      const pos = [...validCoordinates[0]];
+      const additionalCoordinates = [];
+
+      if (alignment === 'horizontal') {
+        for (let i = 0; i < length; i++) {
+          const addition = pos[1] + 1;
+          const arr = pos.splice(1, 1, addition);
+          additionalCoordinates.push([pos[0], arr[0]]);
+        }
+      } else if (alignment === 'vertical') {
+        for (let i = 0; i < length; i++) {
+          const addition = pos[0] + 1;
+          const arr = pos.splice(0, 1, addition);
+          additionalCoordinates.push([arr[0], pos[1]]);
+        }
+      }
+      additionalCoordinates.shift();
+
+      additionalCoordinates.forEach((item) => {
+        validCoordinates.push(item);
+      });
+    })();
   };
 
   // check if ship can be placed on selected field
@@ -338,6 +376,7 @@ const getCoordinates = (id, alignment, position) => {
   ] */
 
   validCoordinates.push(checkPosition());
+  createPosition();
 
   return validCoordinates;
 };
