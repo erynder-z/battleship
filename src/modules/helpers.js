@@ -312,6 +312,7 @@ const getCoordinates = (id, alignment, position) => {
   const checkPosition = () => {
     const selectedField = position; // [0, 1]
 
+    // check of selected field is inside the game grid
     for (let i = 0; i < illegalPositions.length; i++) {
       if (
         illegalPositions[i].id === ship &&
@@ -335,14 +336,18 @@ const getCoordinates = (id, alignment, position) => {
     });
 
     const createCoordinates = (() => {
+      // return is no valid position is returned from checkPosition
       if (validCoordinates[0] === null) {
         return;
       }
       const pos = [...validCoordinates[0]];
       const additionalCoordinates = [];
 
+      // get the number corresponding to the "horizontal" axis in the gameboard-array
+      // repeat "length"-times
       if (alignment === 'horizontal') {
         for (let i = 0; i < length; i++) {
+          // add 1 to that number and push new coordinates to additionalCoordinates-array
           const addition = pos[1] + 1;
           const arr = pos.splice(1, 1, addition);
           additionalCoordinates.push([pos[0], arr[0]]);
@@ -354,6 +359,7 @@ const getCoordinates = (id, alignment, position) => {
           additionalCoordinates.push([arr[0], pos[1]]);
         }
       }
+      // remove first item to prevent duplicate coordinates
       additionalCoordinates.shift();
 
       additionalCoordinates.forEach((item) => {
@@ -362,23 +368,16 @@ const getCoordinates = (id, alignment, position) => {
     })();
   };
 
-  // check if ship can be placed on selected field
-  // occupied fields = selected field + length
-  // occupied fields can not be outside the grid
-  // occupied fields can not already be arked as "occupied"
+  validCoordinates.push(checkPosition());
+  createPosition();
 
-  /*  return validCoordinates; */
+  return validCoordinates;
   /* [
     [0, 1],
     [0, 2],
     [0, 3],
     [0, 4],
   ] */
-
-  validCoordinates.push(checkPosition());
-  createPosition();
-
-  return validCoordinates;
 };
 
 module.exports = getCoordinates;
