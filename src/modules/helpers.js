@@ -304,6 +304,10 @@ const getCoordinates = (id, alignment, position) => {
         [9, 9],
       ],
     },
+    {
+      id: 'occupied',
+      positions: [],
+    },
   ];
 
   const ship = id;
@@ -323,6 +327,7 @@ const getCoordinates = (id, alignment, position) => {
         return null;
       }
     }
+    illegalPositions[10].positions.push(selectedField);
     return selectedField;
   };
 
@@ -364,20 +369,20 @@ const getCoordinates = (id, alignment, position) => {
 
       additionalCoordinates.forEach((item) => {
         validCoordinates.push(item);
+        illegalPositions[10].positions.push(item);
       });
     })();
   };
 
   validCoordinates.push(checkPosition());
   createPosition();
+  // pass only the needed array
+  const illegalPositionsHandover = illegalPositions[10].positions;
 
-  return validCoordinates;
-  /* [
-    [0, 1],
-    [0, 2],
-    [0, 3],
-    [0, 4],
-  ] */
+  return {
+    validCoordinates,
+    illegalPositionsHandover,
+  };
 };
 
 module.exports = getCoordinates;
