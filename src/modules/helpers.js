@@ -1,4 +1,5 @@
 const getCoordinates = (id, alignment, position) => {
+  const illegal = gameboard.illegalPositions;
   const validCoordinates = [];
   const fleet = [
     {
@@ -310,6 +311,8 @@ const getCoordinates = (id, alignment, position) => {
     },
   ];
 
+  illegalPositions[10].positions.push(illegal);
+
   const ship = id;
   const align = alignment; // horizotal or vertical
 
@@ -369,20 +372,29 @@ const getCoordinates = (id, alignment, position) => {
 
       additionalCoordinates.forEach((item) => {
         validCoordinates.push(item);
-        illegalPositions[10].positions.push(item);
       });
     })();
   };
 
+  const checkIllegalPositions = (coordinates) => {
+    coordinates.forEach((item) => {
+      if (JSON.stringify(gameboard.illegalPositions).includes(item)) {
+        coordinates = [null];
+      }
+    });
+    if (coordinates !== null) {
+      coordinates.forEach((item) => {
+        gameboard.illegalPositions.push(item);
+      });
+    } else return;
+
+    return coordinates;
+  };
+
   validCoordinates.push(checkPosition());
   createPosition();
-  // pass only the needed array
-  const illegalPositionsHandover = illegalPositions[10].positions;
 
-  return {
-    validCoordinates,
-    illegalPositionsHandover,
-  };
+  return checkIllegalPositions(validCoordinates);
 };
 
 module.exports = getCoordinates;

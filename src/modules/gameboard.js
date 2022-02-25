@@ -18,12 +18,15 @@ const gameboardFactory = () => {
         [0, 4],
       ] */
 
+      if (position[0] === null) {
+      }
+
       // define the position to look for
       position.forEach((item) => {
         const vert = item[0];
         const horiz = item[1];
 
-        // and mark the mathing nested objects
+        // and mark the matching nested objects
         for (const property in gameboard) {
           for (let i = 0; i < gameboard[property].length; i++) {
             if (
@@ -31,7 +34,6 @@ const gameboardFactory = () => {
               gameboard[property][i].horizontal === horiz
             ) {
               gameboard[property][i].occupied = true;
-              return;
             }
           }
         }
@@ -40,6 +42,7 @@ const gameboardFactory = () => {
     recieveAttack() {
       // recieve coordinates of an attach and mark that field as hit
     },
+    illegalPositions: [],
   };
 
   const cols = 10;
@@ -55,6 +58,7 @@ const gameboardFactory = () => {
       });
     }
   }
+
   return gameboard;
 };
 
