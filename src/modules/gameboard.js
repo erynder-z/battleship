@@ -1,3 +1,4 @@
+const myFleet = require('./ship');
 const shipFactory = require('./ship');
 
 let gameboard;
@@ -38,6 +39,8 @@ const gameboardFactory = () => {
           }
         }
       });
+
+      myFleet.push(ship);
     },
     recieveAttack() {
       // recieve coordinates of an attach and mark that field as hit
