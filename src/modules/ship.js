@@ -1,5 +1,3 @@
-const myFleet = [];
-
 const shipFactory = (id, length, coordinates) => ({
   id,
   length,
@@ -17,5 +15,5 @@ const shipFactory = (id, length, coordinates) => ({
   },
 });
 
+export { shipFactory };
 module.exports = shipFactory;
-module.exports = myFleet;

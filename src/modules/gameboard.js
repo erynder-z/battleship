@@ -1,7 +1,9 @@
-const myFleet = require('./ship');
-const shipFactory = require('./ship');
+import { shipFactory } from './ship';
+
+/* const shipFactory = require('./ship'); */
 
 let gameboard;
+const myFleet = [];
 
 const gameboardFactory = () => {
   // a two dimensional array
@@ -11,15 +13,8 @@ const gameboardFactory = () => {
       const ship = shipFactory(id, length, coordinates);
       const position = ship.coordinates;
 
-      /* coordinates format representing index of the array (vertical) and index of the object inside that array (horizontal)
-       [
-        [0, 1],
-        [0, 2],
-        [0, 3],
-        [0, 4],
-      ] */
-
       if (position[0] === null) {
+        return;
       }
 
       // define the position to look for
@@ -27,14 +22,14 @@ const gameboardFactory = () => {
         const vert = item[0];
         const horiz = item[1];
 
-        // and mark the matching nested objects
         for (const property in gameboard) {
           for (let i = 0; i < gameboard[property].length; i++) {
             if (
-              gameboard[property][i].vertical === vert &&
-              gameboard[property][i].horizontal === horiz
+              this[property][i].vertical === vert &&
+              this[property][i].horizontal === horiz
             ) {
-              gameboard[property][i].occupied = true;
+              this[property][i].occupied = true;
+              return;
             }
           }
         }
@@ -61,8 +56,9 @@ const gameboardFactory = () => {
       });
     }
   }
-
   return gameboard;
 };
 
-module.exports = gameboardFactory;
+export { gameboard, myFleet, gameboardFactory };
+
+module.exports = { gameboardFactory, gameboard, myFleet };

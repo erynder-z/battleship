@@ -1,3 +1,5 @@
+import { gameboard } from './gameboard';
+
 const getCoordinates = (id, alignment, position) => {
   const illegal = gameboard.illegalPositions;
   const validCoordinates = [];
@@ -393,8 +395,8 @@ const getCoordinates = (id, alignment, position) => {
 
   validCoordinates.push(checkPosition());
   createPosition();
-
   return checkIllegalPositions(validCoordinates);
 };
 
+export { getCoordinates };
 module.exports = getCoordinates;
