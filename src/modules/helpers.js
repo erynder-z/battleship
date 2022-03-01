@@ -399,4 +399,3 @@ const getCoordinates = (id, alignment, position) => {
 };
 
 export { getCoordinates };
-module.exports = getCoordinates;

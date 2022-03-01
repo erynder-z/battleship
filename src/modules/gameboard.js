@@ -1,7 +1,5 @@
 import { shipFactory } from './ship';
 
-/* const shipFactory = require('./ship'); */
-
 let gameboard;
 const myFleet = [];
 
@@ -60,5 +58,3 @@ const gameboardFactory = () => {
 };
 
 export { gameboard, myFleet, gameboardFactory };
-
-module.exports = { gameboardFactory, gameboard, myFleet };

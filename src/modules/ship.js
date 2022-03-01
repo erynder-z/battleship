@@ -16,4 +16,3 @@ const shipFactory = (id, length, coordinates) => ({
 });
 
 export { shipFactory };
-module.exports = shipFactory;
