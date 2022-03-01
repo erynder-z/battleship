@@ -1,4 +1,4 @@
-const shipFactory = require('./ship');
+import { shipFactory } from './ship';
 
 const mockBattleship = shipFactory('battleship', 4, [
   [0, 1],
