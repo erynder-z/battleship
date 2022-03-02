@@ -1,6 +1,8 @@
 import { gameboardFactory } from './gameboard';
 
-const board = gameboardFactory();
+let board;
+
+beforeEach(() => (board = gameboardFactory()));
 
 test('grid fields are correctly named', () => {
   expect(board[0][1].horizontal).toEqual(1);
@@ -52,4 +54,9 @@ test('shots should be registered on the gameboard', () => {
   expect(board[0]).toEqual(
     expect.arrayContaining([expect.objectContaining(underFire)])
   );
+});
+
+test('should not be able to fire at the same field twice', () => {
+  board.recieveAttack([0, 0]);
+  expect(board.recieveAttack([0, 0])).toEqual(null);
 });
