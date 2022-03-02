@@ -46,6 +46,10 @@ const gameboardFactory = () => {
             this[property][i].vertical === vert &&
             this[property][i].horizontal === horiz
           ) {
+            if (this[property][i].hit === true) {
+              console.log('already hit!');
+              return null;
+            }
             this[property][i].hit = true;
             return gameboard;
           }
