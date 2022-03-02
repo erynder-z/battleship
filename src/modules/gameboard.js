@@ -35,8 +35,24 @@ const gameboardFactory = () => {
 
       myFleet.push(ship);
     },
-    recieveAttack() {
+    recieveAttack(position) {
       // recieve coordinates of an attach and mark that field as hit
+      const vert = position[0];
+      const horiz = position[1];
+
+      for (const property in gameboard) {
+        for (let i = 0; i < gameboard[property].length; i++) {
+          if (
+            this[property][i].vertical === vert &&
+            this[property][i].horizontal === horiz
+          ) {
+            this[property][i].hit = true;
+            return gameboard;
+          }
+        }
+      }
+
+      return gameboard;
     },
     illegalPositions: [],
   };
