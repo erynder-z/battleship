@@ -32,3 +32,24 @@ test('ships can be placed', () => {
   ).toBe(true);
   expect(board[0][4].occupied).toBe(false);
 });
+
+test('shots return the gameboard-object', () => {
+  const oldBoard = gameboardFactory();
+  const newBoard = oldBoard.recieveAttack([0, 0]);
+
+  expect(oldBoard).toEqual(newBoard);
+});
+
+test('shots should be registered on the gameboard', () => {
+  board.recieveAttack([0, 0]);
+  const underFire = {
+    vertical: 0,
+    horizontal: 0,
+    occupied: false,
+    hit: true,
+  };
+
+  expect(board[0]).toEqual(
+    expect.arrayContaining([expect.objectContaining(underFire)])
+  );
+});
