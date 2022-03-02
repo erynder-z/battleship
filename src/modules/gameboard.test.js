@@ -1,8 +1,15 @@
-import { gameboardFactory } from './gameboard';
+import { gameboardFactory, myFleet } from './gameboard';
 
 let board;
 
 beforeEach(() => (board = gameboardFactory()));
+
+afterEach(() => {
+  const clear = () => {
+    board = null;
+  };
+  clear();
+});
 
 test('grid fields are correctly named', () => {
   expect(board[0][1].horizontal).toEqual(1);
@@ -33,6 +40,14 @@ test('ships can be placed', () => {
       board[0][9].occupied
   ).toBe(true);
   expect(board[0][4].occupied).toBe(false);
+  expect(myFleet[0].id).toBe('carrier');
+  expect(myFleet[0].coordinates).toEqual([
+    [0, 5],
+    [0, 6],
+    [0, 7],
+    [0, 8],
+    [0, 9],
+  ]);
 });
 
 test('shots return the gameboard-object', () => {
