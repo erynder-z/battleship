@@ -17,6 +17,14 @@ const playerFactory = (name, isAI) => {
       isActive: false,
       attack(position) {
         // attack enemy gameboard
+
+        players.forEach((item) => {
+          if (this.id === item.id) {
+            item.isActive = false;
+          } else if (this.id !== item.id) {
+            item.isActive = true;
+          }
+        });
       },
     };
   }
