@@ -51,6 +51,15 @@ const gameboardFactory = () => {
               return null;
             }
             this[property][i].hit = true;
+
+            myFleet.forEach((object) => {
+              object.coordinates.forEach((array) => {
+                if (JSON.stringify(array) === JSON.stringify(position)) {
+                  object.hit();
+                }
+              });
+            });
+
             return gameboard;
           }
         }
