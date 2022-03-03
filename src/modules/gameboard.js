@@ -4,12 +4,13 @@ const boards = [];
 const fleets = [];
 
 let gameboard;
-const myFleet = [];
+/* const myFleet = []; */
 
 const gameboardFactory = () => {
   // a two dimensional array
   gameboard = {
     id: undefined,
+    myFleet: [],
     placeShip(type, length, coordinates) {
       // get the ship from the factory function and get its position
       const ship = shipFactory(type, length, coordinates);
@@ -37,7 +38,7 @@ const gameboardFactory = () => {
         }
       });
 
-      myFleet.push(ship);
+      this.myFleet.push(ship);
     },
     recieveAttack(position) {
       // recieve coordinates of an attach and mark that field as hit
@@ -57,7 +58,7 @@ const gameboardFactory = () => {
             }
             this[property][i].hit = true;
             // loop over ships
-            myFleet.forEach((object) => {
+            this.myFleet.forEach((object) => {
               object.coordinates.forEach((array) => {
                 if (JSON.stringify(array) === JSON.stringify(position)) {
                   object.hit(position);
@@ -92,4 +93,4 @@ const gameboardFactory = () => {
   return gameboard;
 };
 
-export { gameboard, myFleet, gameboardFactory };
+export { gameboard, /*  myFleet, */ gameboardFactory };
