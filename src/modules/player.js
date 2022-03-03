@@ -21,7 +21,7 @@ const playerFactory = (name, isAI) => {
   return {
     name,
     isActive: true,
-    arrack(position) {
+    attack(position) {
       // attack enemy gameboard
     },
   };
