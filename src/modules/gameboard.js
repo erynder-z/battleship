@@ -57,6 +57,7 @@ const gameboardFactory = () => {
               object.coordinates.forEach((array) => {
                 if (JSON.stringify(array) === JSON.stringify(position)) {
                   object.hit(position);
+                  object.isSunk();
                 }
               });
             });
