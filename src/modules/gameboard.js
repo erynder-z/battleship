@@ -56,7 +56,7 @@ const gameboardFactory = () => {
             myFleet.forEach((object) => {
               object.coordinates.forEach((array) => {
                 if (JSON.stringify(array) === JSON.stringify(position)) {
-                  object.hit();
+                  object.hit(position);
                 }
               });
             });
