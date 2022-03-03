@@ -7,7 +7,7 @@ beforeEach(() => (board = gameboardFactory()));
 afterEach(() => {
   const clear = () => {
     board = null;
-    myFleet.length = 0;
+    /*  board.myFleet.length = 0; */
   };
   clear();
 });
@@ -41,8 +41,8 @@ test('ships can be placed', () => {
       board[0][9].occupied
   ).toBe(true);
   expect(board[0][4].occupied).toBe(false);
-  expect(myFleet[0].id).toBe('carrier');
-  expect(myFleet[0].coordinates).toEqual([
+  expect(board.myFleet[0].type).toBe('carrier');
+  expect(board.myFleet[0].coordinates).toEqual([
     [0, 5],
     [0, 6],
     [0, 7],
@@ -90,7 +90,7 @@ test('if a ship is present, it should send the field coordinates to the right sh
     [5, 6],
   ]);
 
-  const ship = myFleet[0];
+  const ship = board.myFleet[0];
   const shipSpy = jest.spyOn(ship, 'hit');
   board.recieveAttack([0, 5]);
 
@@ -102,7 +102,7 @@ test('hit on ships should register on the correct ship', () => {
     [5, 5],
     [5, 6],
   ]);
-  const ship = myFleet[0];
+  const ship = board.myFleet[0];
   board.recieveAttack([5, 5]);
 
   expect(ship.hitbox.length).not.toBe(0);
@@ -114,7 +114,7 @@ test('should check if ship is sunk after recieving an attack', () => {
     [5, 5],
     [5, 6],
   ]);
-  const ship = myFleet[0];
+  const ship = board.myFleet[0];
   const shipSpy = jest.spyOn(ship, 'isSunk');
   board.recieveAttack([5, 5]);
 
@@ -127,7 +127,7 @@ test('isSunk should return true only when ship is sunk', () => {
     [5, 5],
     [5, 6],
   ]);
-  const ship = myFleet[0];
+  const ship = board.myFleet[0];
   const shipSpy = jest.spyOn(ship, 'isSunk');
   board.recieveAttack([5, 5]);
   expect(shipSpy).toHaveReturnedWith(false);
