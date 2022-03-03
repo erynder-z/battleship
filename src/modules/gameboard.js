@@ -1,5 +1,8 @@
 import { shipFactory } from './ship';
 
+const boards = [];
+const fleets = [];
+
 let gameboard;
 const myFleet = [];
 
