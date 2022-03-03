@@ -96,3 +96,15 @@ test('if a ship is present, it should send the field coordinates to the right sh
 
   expect(shipSpy).toHaveBeenCalled();
 });
+
+test('hit on ships should register on the correct ship', () => {
+  board.placeShip('submarine', 2, [
+    [5, 5],
+    [5, 6],
+  ]);
+  const ship = myFleet[0];
+  board.recieveAttack([5, 5]);
+
+  expect(ship.hitbox.length).not.toBe(0);
+  expect(ship.hitbox).toEqual([[5, 5]]);
+});
