@@ -6,10 +6,12 @@
     // attack enemy gameboard
   },
 }); */
+const players = [];
 
 const playerFactory = (name, isAI) => {
   if (isAI === true) {
     return {
+      id: 'player2',
       name,
       isAI,
       isActive: false,
@@ -19,6 +21,7 @@ const playerFactory = (name, isAI) => {
     };
   }
   return {
+    id: 'player1',
     name,
     isActive: true,
     attack(position) {
@@ -27,4 +30,4 @@ const playerFactory = (name, isAI) => {
   };
 };
 
-export { playerFactory };
+export { playerFactory, players };
