@@ -108,3 +108,30 @@ test('hit on ships should register on the correct ship', () => {
   expect(ship.hitbox.length).not.toBe(0);
   expect(ship.hitbox).toEqual([[5, 5]]);
 });
+
+test('should check if ship is sunk after recieving an attack', () => {
+  board.placeShip('submarine', 2, [
+    [5, 5],
+    [5, 6],
+  ]);
+  const ship = myFleet[0];
+  const shipSpy = jest.spyOn(ship, 'isSunk');
+  board.recieveAttack([5, 5]);
+
+  expect(shipSpy).toHaveBeenCalled();
+  expect(shipSpy).toHaveReturnedWith(false);
+});
+
+test('isSunk should return true only when ship is sunk', () => {
+  board.placeShip('submarine', 2, [
+    [5, 5],
+    [5, 6],
+  ]);
+  const ship = myFleet[0];
+  const shipSpy = jest.spyOn(ship, 'isSunk');
+  board.recieveAttack([5, 5]);
+  expect(shipSpy).toHaveReturnedWith(false);
+
+  board.recieveAttack([5, 6]);
+  expect(shipSpy).toHaveReturnedWith(true);
+});
