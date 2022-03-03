@@ -7,6 +7,7 @@ beforeEach(() => (board = gameboardFactory()));
 afterEach(() => {
   const clear = () => {
     board = null;
+    myFleet.length = 0;
   };
   clear();
 });
@@ -74,4 +75,24 @@ test('shots should be registered on the gameboard', () => {
 test('should not be able to fire at the same field twice', () => {
   board.recieveAttack([0, 0]);
   expect(board.recieveAttack([0, 0])).toEqual(null);
+});
+
+test('if a ship is present, it should send the field coordinates to the right ship', () => {
+  board.placeShip('carrier', 5, [
+    [0, 5],
+    [0, 6],
+    [0, 7],
+    [0, 8],
+    [0, 9],
+  ]);
+  board.placeShip('submarine', 2, [
+    [5, 5],
+    [5, 6],
+  ]);
+
+  const ship = myFleet[0];
+  const shipSpy = jest.spyOn(ship, 'hit');
+  board.recieveAttack([0, 5]);
+
+  expect(shipSpy).toHaveBeenCalled();
 });
