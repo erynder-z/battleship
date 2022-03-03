@@ -40,6 +40,7 @@ const gameboardFactory = () => {
       const vert = position[0];
       const horiz = position[1];
 
+      // loop over the gameboard
       for (const property in gameboard) {
         for (let i = 0; i < gameboard[property].length; i++) {
           if (
@@ -51,7 +52,7 @@ const gameboardFactory = () => {
               return null;
             }
             this[property][i].hit = true;
-
+            // loop over ships
             myFleet.forEach((object) => {
               object.coordinates.forEach((array) => {
                 if (JSON.stringify(array) === JSON.stringify(position)) {
