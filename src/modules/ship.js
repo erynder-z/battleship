@@ -1,5 +1,5 @@
-const shipFactory = (id, length, coordinates) => ({
-  id,
+const shipFactory = (type, length, coordinates) => ({
+  type,
   length,
   coordinates,
   hitbox: [],

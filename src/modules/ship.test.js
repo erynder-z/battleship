@@ -8,8 +8,8 @@ const mockBattleship = shipFactory('battleship', 4, [
 ]);
 
 describe('ship:', () => {
-  test('correct id:', () => {
-    expect(mockBattleship.id).toBe('battleship');
+  test('correct type:', () => {
+    expect(mockBattleship.type).toBe('battleship');
   });
 
   test('correct length:', () => {
