@@ -1,34 +1,34 @@
 import { gameboard } from './gameboard';
 
-const getCoordinates = (id, alignment, position) => {
+const getCoordinates = (type, alignment, position) => {
   const illegal = gameboard.illegalPositions;
   const validCoordinates = [];
   const fleet = [
     {
-      id: 'carrier',
+      type: 'carrier',
       length: 5,
     },
     {
-      id: 'battleship',
+      type: 'battleship',
       length: 4,
     },
     {
-      id: 'cruiser',
+      type: 'cruiser',
       length: 3,
     },
     {
-      id: 'submarine',
+      type: 'submarine',
       length: 2,
     },
     {
-      id: 'destroyer',
+      type: 'destroyer',
       length: 2,
     },
   ];
 
   const illegalPositions = [
     {
-      id: 'carrier',
+      type: 'carrier',
       orientation: 'horizontal',
       positions: [
         [0, 6],
@@ -74,7 +74,7 @@ const getCoordinates = (id, alignment, position) => {
       ],
     },
     {
-      id: 'carrier',
+      type: 'carrier',
       orientation: 'vertical',
       positions: [
         [6, 0],
@@ -120,7 +120,7 @@ const getCoordinates = (id, alignment, position) => {
       ],
     },
     {
-      id: 'battleship',
+      type: 'battleship',
       orientation: 'horizontal',
       positions: [
         [0, 7],
@@ -156,7 +156,7 @@ const getCoordinates = (id, alignment, position) => {
       ],
     },
     {
-      id: 'battleship',
+      type: 'battleship',
       orientation: 'vertical',
       positions: [
         [7, 0],
@@ -192,7 +192,7 @@ const getCoordinates = (id, alignment, position) => {
       ],
     },
     {
-      id: 'cruiser',
+      type: 'cruiser',
       orientation: 'horizontal',
       positions: [
         [0, 8],
@@ -218,7 +218,7 @@ const getCoordinates = (id, alignment, position) => {
       ],
     },
     {
-      id: 'cruiser',
+      type: 'cruiser',
       orientation: 'vertical',
       positions: [
         [8, 0],
@@ -244,7 +244,7 @@ const getCoordinates = (id, alignment, position) => {
       ],
     },
     {
-      id: 'submarine',
+      type: 'submarine',
       orientation: 'horizontal',
       positions: [
         [0, 9],
@@ -260,7 +260,7 @@ const getCoordinates = (id, alignment, position) => {
       ],
     },
     {
-      id: 'submarine',
+      type: 'submarine',
       orientation: 'vertical',
       positions: [
         [9, 0],
@@ -276,7 +276,7 @@ const getCoordinates = (id, alignment, position) => {
       ],
     },
     {
-      id: 'destroyer',
+      type: 'destroyer',
       orientation: 'horizontal',
       positions: [
         [0, 9],
@@ -292,7 +292,7 @@ const getCoordinates = (id, alignment, position) => {
       ],
     },
     {
-      id: 'destroyer',
+      type: 'destroyer',
       orientation: 'vertical',
       positions: [
         [9, 0],
@@ -308,14 +308,14 @@ const getCoordinates = (id, alignment, position) => {
       ],
     },
     {
-      id: 'occupied',
+      type: 'occupied',
       positions: [],
     },
   ];
 
   illegalPositions[10].positions.push(illegal);
 
-  const ship = id;
+  const ship = type;
   const align = alignment; // horizotal or vertical
 
   const checkPosition = () => {
@@ -324,7 +324,7 @@ const getCoordinates = (id, alignment, position) => {
     // check of selected field is inside the game grid
     for (let i = 0; i < illegalPositions.length; i++) {
       if (
-        illegalPositions[i].id === ship &&
+        illegalPositions[i].type === ship &&
         illegalPositions[i].orientation === align &&
         JSON.stringify(illegalPositions[i].positions).includes(selectedField)
       ) {
@@ -340,7 +340,7 @@ const getCoordinates = (id, alignment, position) => {
     let length;
 
     fleet.forEach((item) => {
-      if (item.id === ship) {
+      if (item.type === ship) {
         length = item.length;
       }
     });

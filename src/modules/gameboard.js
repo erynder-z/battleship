@@ -6,9 +6,9 @@ const myFleet = [];
 const gameboardFactory = () => {
   // a two dimensional array
   gameboard = {
-    placeShip(id, length, coordinates) {
+    placeShip(type, length, coordinates) {
       // get the ship from the factory function and get its position
-      const ship = shipFactory(id, length, coordinates);
+      const ship = shipFactory(type, length, coordinates);
       const position = ship.coordinates;
 
       if (position[0] === null) {
