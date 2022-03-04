@@ -92,4 +92,4 @@ const gameboardFactory = () => {
   return gameboard;
 };
 
-export { gameboard, /*  myFleet, */ gameboardFactory };
+export { gameboard, boards, gameboardFactory };
