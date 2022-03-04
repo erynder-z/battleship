@@ -17,6 +17,26 @@ const playerFactory = (name, isAI) => {
       name,
       isAI,
       isActive: false,
+
+      getRandomPosition() {
+        let randomHoritontal;
+        let randomVertical;
+        const randomPosition = [];
+
+        boards.forEach((board) => {
+          if (this.id !== board.id) {
+            const randomArray = board[Math.floor(Math.random() * 10)];
+            const randomObject = randomArray[Math.floor(Math.random() * 10)];
+            randomVertical = randomObject.vertical;
+            randomHoritontal = randomObject.horizontal;
+          }
+        });
+        randomPosition.push(randomVertical);
+        randomPosition.push(randomHoritontal);
+
+        return randomPosition;
+      },
+
       attack(position) {
         // attack enemy gameboard
         boards.forEach((board) => {
