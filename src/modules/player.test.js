@@ -55,3 +55,29 @@ test('player should be able to attack the enemy gameboard', () => {
 
   expect(boardSpy).toHaveBeenCalled();
 });
+
+test('player should be able to attack enemy ship', () => {
+  const player1 = playerFactory('dave', false);
+  const playerAI = playerFactory('hal', true);
+  const p1Board = gameboardFactory();
+  const pAIBoard = gameboardFactory();
+  p1Board.id = 'player1';
+  pAIBoard.id = 'player2';
+  boards.push(p1Board);
+  boards.push(pAIBoard);
+
+  pAIBoard.placeShip('carrier', 5, [
+    [0, 5],
+    [0, 6],
+    [0, 7],
+    [0, 8],
+    [0, 9],
+  ]);
+
+  const pAIShip = pAIBoard.myFleet[0];
+  const shipSpy = jest.spyOn(pAIShip, 'hit');
+  const attack = player1.attack([0, 5]);
+
+  expect(shipSpy).toHaveBeenCalled();
+  expect(pAIShip.hitbox).toEqual([[0, 5]]);
+});
