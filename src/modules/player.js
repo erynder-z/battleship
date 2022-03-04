@@ -1,3 +1,5 @@
+import { boards } from './gameboard';
+
 /* const playerFactory = (name, isAI) => ({
   name,
   isAI,
@@ -17,7 +19,12 @@ const playerFactory = (name, isAI) => {
       isActive: false,
       attack(position) {
         // attack enemy gameboard
-
+        boards.forEach((board) => {
+          if (this.id !== board.id) {
+            board.recieveAttack(position);
+          }
+        });
+        // switch active player
         players.forEach((item) => {
           if (this.id === item.id) {
             item.isActive = false;
@@ -34,7 +41,12 @@ const playerFactory = (name, isAI) => {
     isActive: true,
     attack(position) {
       // attack enemy gameboard
-
+      boards.forEach((board) => {
+        if (this.id !== board.id) {
+          board.recieveAttack(position);
+        }
+      });
+      // switch active player
       players.forEach((item) => {
         if (this.id === item.id) {
           item.isActive = false;
