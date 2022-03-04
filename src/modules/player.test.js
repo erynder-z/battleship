@@ -1,6 +1,14 @@
 import { playerFactory, players } from './player';
 import { boards, gameboardFactory, myFleet } from './gameboard';
 
+afterEach(() => {
+  const clear = () => {
+    boards.length = 0;
+    players.length = 0;
+  };
+  clear();
+});
+
 test('if player is AI, it should return the AI-player', () => {
   const playerAI = playerFactory('hal', true);
   expect(playerAI.isAI).toBe(true);
@@ -80,4 +88,22 @@ test('player should be able to attack enemy ship', () => {
 
   expect(shipSpy).toHaveBeenCalled();
   expect(pAIShip.hitbox).toEqual([[0, 5]]);
+});
+
+test('AI player should get random fields', () => {
+  const player1 = playerFactory('dave', false);
+  const playerAI = playerFactory('hal', true);
+  const p1Board = gameboardFactory();
+  const pAIBoard = gameboardFactory();
+  p1Board.id = 'player1';
+  pAIBoard.id = 'player2';
+  boards.push(p1Board);
+  boards.push(pAIBoard);
+
+  const position = playerAI.getRandomPosition();
+
+  expect(position[0]).toBeGreaterThanOrEqual(0);
+  expect(position[0]).toBeLessThanOrEqual(9);
+  expect(position[1]).toBeGreaterThanOrEqual(0);
+  expect(position[1]).toBeLessThanOrEqual(9);
 });
