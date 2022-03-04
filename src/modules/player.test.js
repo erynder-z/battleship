@@ -107,3 +107,21 @@ test('AI player should get random fields', () => {
   expect(position[1]).toBeGreaterThanOrEqual(0);
   expect(position[1]).toBeLessThanOrEqual(9);
 });
+
+test('AI player should attack random fields', () => {
+  const player1 = playerFactory('dave', false);
+  const playerAI = playerFactory('hal', true);
+  const p1Board = gameboardFactory();
+  const pAIBoard = gameboardFactory();
+  p1Board.id = 'player1';
+  pAIBoard.id = 'player2';
+  boards.push(p1Board);
+  boards.push(pAIBoard);
+
+  const boardSpy = jest.spyOn(p1Board, 'recieveAttack');
+
+  const randomAttack = playerAI.attack(playerAI.getRandomPosition());
+
+  expect(boardSpy).toHaveBeenCalled();
+  expect(JSON.stringify(p1Board)).toContain('"hit":true');
+});
