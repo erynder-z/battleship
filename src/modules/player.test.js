@@ -1,4 +1,5 @@
 import { playerFactory, players } from './player';
+import { boards, gameboardFactory, myFleet } from './gameboard';
 
 test('if player is AI, it should return the AI-player', () => {
   const playerAI = playerFactory('hal', true);
@@ -37,4 +38,20 @@ test('players should take turns', () => {
 
   expect(player1.isActive).toBe(true);
   expect(playerAI.isActive).toBe(false);
+});
+
+test('player should be able to attack the enemy gameboard', () => {
+  const player1 = playerFactory('dave', false);
+  const playerAI = playerFactory('hal', true);
+  const p1Board = gameboardFactory();
+  const pAIBoard = gameboardFactory();
+  p1Board.id = 'player1';
+  pAIBoard.id = 'player2';
+  boards.push(p1Board);
+  boards.push(pAIBoard);
+
+  const boardSpy = jest.spyOn(pAIBoard, 'recieveAttack');
+  const attack = player1.attack([0, 5]);
+
+  expect(boardSpy).toHaveBeenCalled();
 });
