@@ -125,3 +125,43 @@ test('AI player should attack random fields', () => {
   expect(boardSpy).toHaveBeenCalled();
   expect(JSON.stringify(p1Board)).toContain('"hit":true');
 });
+
+test(' player should be able to attack AI board fields', () => {
+  const player1 = playerFactory('dave', false);
+  const playerAI = playerFactory('hal', true);
+  const p1Board = gameboardFactory();
+  const pAIBoard = gameboardFactory();
+  p1Board.id = 'player1';
+  pAIBoard.id = 'player2';
+  boards.push(p1Board);
+  boards.push(pAIBoard);
+
+  const boardSpy = jest.spyOn(pAIBoard, 'recieveAttack');
+
+  const playerAttack = player1.attack([6, 9]);
+
+  expect(boardSpy).toHaveBeenCalled();
+  expect(JSON.stringify(pAIBoard)).toContain('"hit":true');
+});
+
+test('AI should only attack fields that are not yet hit', () => {
+  const player1 = playerFactory('dave', false);
+  const playerAI = playerFactory('hal', true);
+  const p1Board = gameboardFactory();
+  const pAIBoard = gameboardFactory();
+  p1Board.id = 'player1';
+  pAIBoard.id = 'player2';
+  boards.push(p1Board);
+  boards.push(pAIBoard);
+  for (let i = 0; i < 10; i++) {
+    const boardVertical = p1Board[i];
+    boardVertical.forEach((item) => {
+      item.hit = true;
+    });
+  }
+
+  p1Board[9][9].hit = false;
+  const attack = playerAI.validatePosition(playerAI.getRandomPosition());
+
+  expect(p1Board[9][9].hit).toBe(true);
+});
