@@ -33,7 +33,7 @@ const playerFactory = (name, isAI) => {
         const checked = position;
         const vert = position[0];
         const horiz = position[1];
-
+        // check if posittion  was alredy hit
         boards.forEach((board) => {
           if (this.id !== board.id) {
             const field = board[vert].find(
