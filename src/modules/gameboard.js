@@ -24,7 +24,13 @@ const gameboardFactory = () => {
         const vert = item[0];
         const horiz = item[1];
 
-        for (const property in gameboard) {
+        const field = gameboard[vert].find(
+          ({ horizontal }) => horizontal === horiz
+        );
+
+        field.occupied = true;
+
+        /* for (const property in gameboard) {
           for (let i = 0; i < gameboard[property].length; i++) {
             if (
               this[property][i].vertical === vert &&
@@ -34,7 +40,7 @@ const gameboardFactory = () => {
               return;
             }
           }
-        }
+        } */
       });
 
       this.myFleet.push(ship);
