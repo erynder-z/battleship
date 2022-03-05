@@ -50,8 +50,26 @@ const gameboardFactory = () => {
       const vert = position[0];
       const horiz = position[1];
 
+      const field = gameboard[vert].find(
+        ({ horizontal }) => horizontal === horiz
+      );
+
+      if (field.hit === true) {
+        console.log('already hit!');
+        return null;
+      }
+      field.hit = true;
+      this.myFleet.forEach((object) => {
+        object.coordinates.forEach((array) => {
+          if (JSON.stringify(array) === JSON.stringify(position)) {
+            object.hit(position);
+            object.isSunk();
+          }
+        });
+      });
+
       // loop over the gameboard
-      for (const property in gameboard) {
+      /*  for (const property in gameboard) {
         for (let i = 0; i < gameboard[property].length; i++) {
           if (
             this[property][i].vertical === vert &&
@@ -75,7 +93,7 @@ const gameboardFactory = () => {
             return gameboard;
           }
         }
-      }
+      } */
 
       return gameboard;
     },
