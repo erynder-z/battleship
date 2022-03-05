@@ -1,4 +1,4 @@
-import { boards } from './gameboard';
+import { boards, gameboard } from './gameboard';
 
 /* const playerFactory = (name, isAI) => ({
   name,
@@ -35,6 +35,27 @@ const playerFactory = (name, isAI) => {
         randomPosition.push(randomHoritontal);
 
         return randomPosition;
+      },
+
+      validatePosition(position) {
+        const checked = position;
+        const vert = position[0];
+        const horiz = position[1];
+
+        boards.forEach((board) => {
+          if (this.id !== board.id) {
+            const field = board[vert].find(
+              ({ horizontal }) => horizontal === horiz
+            );
+            if (field.hit === false) {
+              this.attack(checked);
+              return;
+            }
+            if (field.hit === true) {
+              this.validatePosition(this.getRandomPosition());
+            }
+          }
+        });
       },
 
       attack(position) {
