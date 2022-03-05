@@ -1,13 +1,5 @@
 import { boards, gameboard } from './gameboard';
 
-/* const playerFactory = (name, isAI) => ({
-  name,
-  isAI,
-  isActive: false,
-  attack(position) {
-    // attack enemy gameboard
-  },
-}); */
 const players = [];
 
 const playerFactory = (name, isAI) => {

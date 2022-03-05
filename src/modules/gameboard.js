@@ -3,7 +3,6 @@ import { shipFactory } from './ship';
 const boards = [];
 
 let gameboard;
-/* const myFleet = []; */
 
 const gameboardFactory = () => {
   // a two dimensional array
@@ -27,18 +26,6 @@ const gameboardFactory = () => {
         const field = this[vert].find(({ horizontal }) => horizontal === horiz);
 
         field.occupied = true;
-
-        /* for (const property in gameboard) {
-          for (let i = 0; i < gameboard[property].length; i++) {
-            if (
-              this[property][i].vertical === vert &&
-              this[property][i].horizontal === horiz
-            ) {
-              this[property][i].occupied = true;
-              return;
-            }
-          }
-        } */
       });
 
       this.myFleet.push(ship);
@@ -66,33 +53,6 @@ const gameboardFactory = () => {
           }
         });
       });
-
-      // loop over the gameboard
-      /* for (const property in gameboard) {
-        for (let i = 0; i < gameboard[property].length; i++) {
-          if (
-            this[property][i].vertical === vert &&
-            this[property][i].horizontal === horiz
-          ) {
-            if (this[property][i].hit === true) {
-              console.log('already hit!');
-              return null;
-            }
-            this[property][i].hit = true;
-            // loop over ships
-            this.myFleet.forEach((object) => {
-              object.coordinates.forEach((array) => {
-                if (JSON.stringify(array) === JSON.stringify(position)) {
-                  object.hit(position);
-                  object.isSunk();
-                }
-              });
-            });
-
-            return gameboard;
-          }
-        }
-      } */
 
       return gameboard;
     },
