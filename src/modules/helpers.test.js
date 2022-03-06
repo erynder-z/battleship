@@ -2,17 +2,18 @@ import { myFleet, gameboardFactory, gameboard } from './gameboard';
 import { getCoordinates } from './helpers';
 import { shipFactory } from './ship';
 
-beforeEach(() => {
+/* beforeEach(() => {
   const gameboardMock = jest.fn();
   gameboardMock.mockReturnValue(gameboardFactory());
 });
 
 afterEach(() => {
   jest.clearAllMocks();
-});
+}); */
 
 test('correct ship coordinates get returned (hor)', () => {
-  expect(getCoordinates('carrier', 'horizontal', [0, 5])).toEqual([
+  const board = gameboardFactory();
+  expect(getCoordinates('carrier', 'horizontal', [0, 5], board)).toEqual([
     [0, 5],
     [0, 6],
     [0, 7],
@@ -22,7 +23,8 @@ test('correct ship coordinates get returned (hor)', () => {
 });
 
 test('correct ship coordinates get returned (vert)', () => {
-  expect(getCoordinates('carrier', 'vertical', [0, 5])).toEqual([
+  const board = gameboardFactory();
+  expect(getCoordinates('carrier', 'vertical', [0, 5], board)).toEqual([
     [0, 5],
     [1, 5],
     [2, 5],
@@ -32,10 +34,16 @@ test('correct ship coordinates get returned (vert)', () => {
 });
 
 test('invalid positions are rejected (outside the board)', () => {
-  expect(getCoordinates('carrier', 'horizontal', [0, 8])).toEqual([null]);
+  const board = gameboardFactory();
+  expect(getCoordinates('carrier', 'horizontal', [0, 8], board)).toEqual([
+    null,
+  ]);
 });
 
 test('invalid positions are rejected (field is already occupied)', () => {
+  const board = gameboardFactory();
   gameboard.illegalPositions.push([0, 5], [0, 6], [0, 7], [0, 8], [0, 9]);
-  expect(getCoordinates('carrier', 'horizontal', [0, 5])).toEqual([null]);
+  expect(getCoordinates('carrier', 'horizontal', [0, 5], board)).toEqual([
+    null,
+  ]);
 });
