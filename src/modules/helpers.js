@@ -1,7 +1,147 @@
 import { gameboard } from './gameboard';
 
-const getCoordinates = (type, alignment, position) => {
-  const illegal = gameboard.illegalPositions;
+const setupAI = (pAIBoard) => {
+  const placeAIships = (() => {
+    const fleet = [
+      {
+        type: 'carrier',
+        length: 5,
+      },
+      {
+        type: 'battleship',
+        length: 4,
+      },
+      {
+        type: 'cruiser',
+        length: 3,
+      },
+      {
+        type: 'submarine',
+        length: 2,
+      },
+      {
+        type: 'destroyer',
+        length: 2,
+      },
+    ];
+
+    pAIBoard.placeShip(
+      'carrier',
+      5,
+      getCoordinates('carrier', 'vertical', [0, 0], pAIBoard)
+    );
+    fleet.shift();
+
+    pAIBoard.placeShip(
+      'battleship',
+      4,
+      getCoordinates('battleship', 'horizontal', [4, 2], pAIBoard)
+    );
+    fleet.shift();
+
+    pAIBoard.placeShip(
+      'cruiser',
+      3,
+      getCoordinates('cruiser', 'vertical', [1, 8], pAIBoard)
+    );
+    fleet.shift();
+
+    pAIBoard.placeShip(
+      'submarine',
+      2,
+      getCoordinates('submarine', 'horizontal', [8, 2], pAIBoard)
+    );
+    fleet.shift();
+
+    pAIBoard.placeShip(
+      'destroyer',
+      2,
+      getCoordinates('destroyer', 'vertical', [8, 8], pAIBoard)
+    );
+    fleet.shift();
+  })();
+};
+
+const setupPlayer = (p1Board) => {
+  const placePlayerships = (() => {
+    const fleet = [
+      {
+        type: 'carrier',
+        length: 5,
+      },
+      {
+        type: 'battleship',
+        length: 4,
+      },
+      {
+        type: 'cruiser',
+        length: 3,
+      },
+      {
+        type: 'submarine',
+        length: 2,
+      },
+      {
+        type: 'destroyer',
+        length: 2,
+      },
+    ];
+
+    p1Board.placeShip(
+      'carrier',
+      5,
+      getCoordinates('carrier', 'vertical', [1, 1], p1Board)
+    );
+    fleet.shift();
+
+    p1Board.placeShip(
+      'battleship',
+      4,
+      getCoordinates('battleship', 'horizontal', [7, 1], p1Board)
+    );
+    fleet.shift();
+
+    p1Board.placeShip(
+      'cruiser',
+      3,
+      getCoordinates('cruiser', 'vertical', [1, 8], p1Board)
+    );
+    fleet.shift();
+
+    p1Board.placeShip(
+      'submarine',
+      2,
+      getCoordinates('submarine', 'horizontal', [9, 0], p1Board)
+    );
+    fleet.shift();
+
+    p1Board.placeShip(
+      'destroyer',
+      2,
+      getCoordinates('destroyer', 'horizontal', [9, 3], p1Board)
+    );
+    fleet.shift();
+  })();
+};
+
+const getRandomField = () => {
+  let randomHoritontal;
+  let randomVertical;
+  const randomPosition = [];
+
+  const randomArray = gameboard[Math.floor(Math.random() * 10)];
+  const randomObject = randomArray[Math.floor(Math.random() * 10)];
+  randomVertical = randomObject.vertical;
+  randomHoritontal = randomObject.horizontal;
+
+  randomPosition.push(randomVertical);
+  randomPosition.push(randomHoritontal);
+
+  return randomPosition;
+};
+
+const getCoordinates = (type, alignment, position, board) => {
+  const illegal = board.illegalPositions;
   const validCoordinates = [];
   const fleet = [
     {
@@ -380,13 +520,13 @@ const getCoordinates = (type, alignment, position) => {
 
   const checkIllegalPositions = (coordinates) => {
     coordinates.forEach((item) => {
-      if (JSON.stringify(gameboard.illegalPositions).includes(item)) {
+      if (JSON.stringify(board.illegalPositions).includes(item)) {
         coordinates = [null];
       }
     });
     if (coordinates !== null) {
       coordinates.forEach((item) => {
-        gameboard.illegalPositions.push(item);
+        board.illegalPositions.push(item);
       });
     } else return;
 
@@ -398,4 +538,4 @@ const getCoordinates = (type, alignment, position) => {
   return checkIllegalPositions(validCoordinates);
 };
 
-export { getCoordinates };
+export { getCoordinates, getRandomField, setupAI, setupPlayer };
