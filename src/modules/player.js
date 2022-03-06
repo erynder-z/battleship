@@ -1,4 +1,4 @@
-import { boards, gameboard } from './gameboard';
+import { boards } from './gameboard';
 
 const players = [];
 

@@ -1,4 +1,4 @@
-import { gameboardFactory, myFleet } from './gameboard';
+import { gameboardFactory } from './gameboard';
 
 let board;
 
@@ -7,7 +7,6 @@ beforeEach(() => (board = gameboardFactory()));
 afterEach(() => {
   const clear = () => {
     board = null;
-    /*  board.myFleet.length = 0; */
   };
   clear();
 });
