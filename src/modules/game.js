@@ -24,8 +24,6 @@ const runGame = () => {
   const theButton = document.getElementById('AIattack');
   theButton.addEventListener('click', () => {
     playerAI.attack(playerAI.getRandomPosition());
-    document.getElementById('p1Board').innerHTML = '';
-    document.getElementById('pAIBoard').innerHTML = '';
     renderBoard(p1Board, pAIBoard);
   });
 };
