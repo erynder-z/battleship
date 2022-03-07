@@ -46,6 +46,11 @@ body {
   grid-template-rows: repeat(10, 1fr);
 }
 
+.grid-p1:hover,
+.grid-pAI:hover {
+  cursor: crosshair;
+}
+
 .row-p1,
 .row-pAI {
   display: grid;
@@ -57,4 +62,33 @@ body {
   border: solid 1px black;
   height: 100%;
   width: 100%;
+}
+
+.field-p1 {
+  background-color: #7897ab;
+}
+
+.field-pAI {
+  background-color: #d885a3;
+}
+
+.field-p1:hover,
+.field-pAI:hover {
+  filter: brightness(125%);
+}
+
+.p1-ship {
+  background-color: blueviolet;
+}
+
+.pAI-ship {
+  /* background-color: darkslategrey; */
+}
+
+.miss {
+  background-color: darkred;
+}
+
+.hit {
+  background-color: seagreen;
 }
