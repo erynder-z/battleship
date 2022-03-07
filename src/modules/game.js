@@ -1,10 +1,6 @@
+import renderBoard from './dom';
 import { boards, gameboardFactory } from './gameboard';
-import {
-  getCoordinates,
-  getRandomField,
-  setupAI,
-  setupPlayer,
-} from './helpers';
+import { setupAI, setupPlayer } from './helpers';
 import { playerFactory } from './player';
 
 const runGame = () => {
@@ -21,8 +17,17 @@ const runGame = () => {
   setupPlayer(p1Board);
   /* console.log(player1); */
   /* console.log(playerAI); */
-  console.log(p1Board);
-  console.log(pAIBoard);
+  /*  console.log(p1Board);
+  console.log(pAIBoard); */
+  renderBoard(p1Board, pAIBoard);
+
+  const theButton = document.getElementById('AIattack');
+  theButton.addEventListener('click', () => {
+    playerAI.attack(playerAI.getRandomPosition());
+    document.getElementById('p1Board').innerHTML = '';
+    document.getElementById('pAIBoard').innerHTML = '';
+    renderBoard(p1Board, pAIBoard);
+  });
 };
 
 export default runGame;

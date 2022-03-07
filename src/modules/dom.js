@@ -5,6 +5,8 @@ const renderBoard = (p1Board, pAIBoard) => {
   const pAIGrid = document.getElementById('pAIBoard');
 
   const createGrids = (p1, pAI) => {
+    p1Grid.innerHTML = '';
+    pAIGrid.innerHTML = '';
     // create 10 rows
     for (let i = 0; i < 10; i++) {
       const row = document.createElement('div');
@@ -44,6 +46,12 @@ const renderBoard = (p1Board, pAIBoard) => {
         if (element.occupied === true) {
           field.classList.add('pAI-ship');
         }
+        if (element.hit === true && element.occupied === true) {
+          field.classList.add('hit');
+        }
+        if (element.hit === true && element.occupied === false) {
+          field.classList.add('miss');
+        }
         field.addEventListener('click', () => {
           // attack field
           const vert = element.vertical;
@@ -58,6 +66,7 @@ const renderBoard = (p1Board, pAIBoard) => {
         row.appendChild(field);
       });
     }
+    return { p1, pAI };
   };
 
   createGrids(p1, pAI);
