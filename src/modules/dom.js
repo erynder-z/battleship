@@ -19,6 +19,12 @@ const renderBoard = (p1Board, pAIBoard) => {
         if (element.occupied === true) {
           field.classList.add('p1-ship');
         }
+        if (element.hit === true && element.occupied === true) {
+          field.classList.add('hit');
+        }
+        if (element.hit === true && element.occupied === false) {
+          field.classList.add('miss');
+        }
         field.addEventListener('click', () => {
           // place ship
         });
