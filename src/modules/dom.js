@@ -40,6 +40,14 @@ const renderBoard = (p1Board, pAIBoard) => {
         }
         field.addEventListener('click', () => {
           // attack field
+          const vert = element.vertical;
+          const horiz = element.horizontal;
+          pAI.recieveAttack([vert, horiz]);
+          if (element.occupied === true) {
+            field.classList.add('hit');
+          } else {
+            field.classList.add('miss');
+          }
         });
         row.appendChild(field);
       });
