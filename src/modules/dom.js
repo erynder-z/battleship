@@ -19,6 +19,9 @@ const renderBoard = (p1Board, pAIBoard) => {
         if (element.occupied === true) {
           field.classList.add('p1-ship');
         }
+        field.addEventListener('click', () => {
+          // place ship
+        });
         row.appendChild(field);
       });
     }
@@ -35,10 +38,14 @@ const renderBoard = (p1Board, pAIBoard) => {
         if (element.occupied === true) {
           field.classList.add('pAI-ship');
         }
+        field.addEventListener('click', () => {
+          // attack field
+        });
         row.appendChild(field);
       });
     }
   };
+
   createGrids(p1, pAI);
 };
 
