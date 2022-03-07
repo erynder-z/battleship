@@ -16,6 +16,9 @@ const renderBoard = (p1Board, pAIBoard) => {
         const field = document.createElement('div');
         field.classList.add('field-p1');
         field.setAttribute('id', `p1-row${i}-field${j}`);
+        if (element.occupied === true) {
+          field.classList.add('p1-ship');
+        }
         row.appendChild(field);
       });
     }
@@ -29,6 +32,9 @@ const renderBoard = (p1Board, pAIBoard) => {
         const field = document.createElement('div');
         field.classList.add('field-pAI');
         field.setAttribute('id', `pAI-row${i}-field${j}`);
+        if (element.occupied === true) {
+          field.classList.add('pAI-ship');
+        }
         row.appendChild(field);
       });
     }
