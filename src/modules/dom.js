@@ -1,10 +1,12 @@
-const renderBoard = (p1Board, pAIBoard) => {
-  const p1 = p1Board;
-  const pAI = pAIBoard;
+const renderBoard = (p1Board, pAIBoard, player1, playerAI) => {
+  const p1board = p1Board;
+  const pAIboard = pAIBoard;
+  const p1 = player1;
+  const pAI = playerAI;
   const p1Grid = document.getElementById('p1Board');
   const pAIGrid = document.getElementById('pAIBoard');
 
-  const createGrids = (p1, pAI) => {
+  const createGrids = (p1board, pAIboard) => {
     p1Grid.innerHTML = '';
     pAIGrid.innerHTML = '';
     // create 10 rows
@@ -14,7 +16,7 @@ const renderBoard = (p1Board, pAIBoard) => {
       row.setAttribute('id', `p1-row${i}`);
       p1Grid.appendChild(row);
       // fill the rows with one div for each object in the board
-      p1[i].forEach((element, j) => {
+      p1board[i].forEach((element, j) => {
         const field = document.createElement('div');
         field.classList.add('field-p1');
         field.setAttribute('id', `p1-row${i}-field${j}`);
@@ -39,7 +41,7 @@ const renderBoard = (p1Board, pAIBoard) => {
       row.setAttribute('id', `pAI-row${i}`);
       pAIGrid.appendChild(row);
 
-      pAI[i].forEach((element, j) => {
+      pAIboard[i].forEach((element, j) => {
         const field = document.createElement('div');
         field.classList.add('field-pAI');
         field.setAttribute('id', `pAI-row${i}-field${j}`);
@@ -56,7 +58,18 @@ const renderBoard = (p1Board, pAIBoard) => {
           // attack field
           const vert = element.vertical;
           const horiz = element.horizontal;
-          pAI.recieveAttack([vert, horiz]);
+          p1.attack([vert, horiz]);
+          if (
+            field.classList.contains('miss') === false &&
+            field.classList.contains('hit') === false
+          ) {
+            const move = (() => {
+              renderBoard(p1Board, pAIBoard, p1, pAI);
+              pAI.attack(pAI.getRandomPosition());
+              renderBoard(p1Board, pAIBoard, p1, pAI);
+            })();
+          }
+
           if (element.occupied === true) {
             field.classList.add('hit');
           } else {
@@ -69,7 +82,7 @@ const renderBoard = (p1Board, pAIBoard) => {
     return { p1, pAI };
   };
 
-  createGrids(p1, pAI);
+  createGrids(p1board, pAIboard);
 };
 
 export default renderBoard;
