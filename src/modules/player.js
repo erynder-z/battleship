@@ -92,7 +92,8 @@ const playerFactory = (name, isAI) => {
 };
 
 const turnAI = (pAI) => {
-  pAI.attack(pAI.getRandomPosition());
+  const attack = pAI.validatePosition(pAI.getRandomPosition());
+
   return pAI;
 };
 
