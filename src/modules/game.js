@@ -13,6 +13,8 @@ const runGame = () => {
   pAIBoard.id = 'player2';
   boards.push(p1Board);
   boards.push(pAIBoard);
+  players.push(player1);
+  players.push(playerAI);
 
   setupAI(pAIBoard);
   setupPlayer(p1Board);
