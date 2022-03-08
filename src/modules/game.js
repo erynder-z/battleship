@@ -1,13 +1,14 @@
 import renderBoard from './dom';
 import { boards, gameboardFactory } from './gameboard';
 import { setupAI, setupPlayer } from './helpers';
-import { playerFactory } from './player';
+import { playerFactory, players } from './player';
 
 const runGame = () => {
   const player1 = playerFactory('dave', false);
   const playerAI = playerFactory('hal', true);
   const p1Board = gameboardFactory();
   const pAIBoard = gameboardFactory();
+  const gameover = false;
   p1Board.id = 'player1';
   pAIBoard.id = 'player2';
   boards.push(p1Board);
@@ -19,13 +20,7 @@ const runGame = () => {
   /* console.log(playerAI); */
   /*  console.log(p1Board);
   console.log(pAIBoard); */
-  renderBoard(p1Board, pAIBoard);
-
-  const theButton = document.getElementById('AIattack');
-  theButton.addEventListener('click', () => {
-    playerAI.attack(playerAI.getRandomPosition());
-    renderBoard(p1Board, pAIBoard);
-  });
+  renderBoard(p1Board, pAIBoard, player1, playerAI);
 };
 
 export default runGame;
