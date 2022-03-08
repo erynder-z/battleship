@@ -91,4 +91,9 @@ const playerFactory = (name, isAI) => {
   };
 };
 
-export { playerFactory, players };
+const turnAI = (pAI) => {
+  pAI.attack(pAI.getRandomPosition());
+  return pAI;
+};
+
+export { playerFactory, players, turnAI };
