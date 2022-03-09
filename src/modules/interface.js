@@ -1,7 +1,7 @@
 import renderBoard from './dom';
 import { getCoordinates } from './helpers';
 
-const activateButtons = (p1Board, pAIBoard, player1, playerAI) => {
+const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
   const alignmentBtn = document.getElementById('alignment');
   const carrierBtn = document.getElementById('carrier');
   const battleshipBtn = document.getElementById('battleship');
@@ -71,4 +71,4 @@ const activateButtons = (p1Board, pAIBoard, player1, playerAI) => {
   };
 };
 
-export { activateButtons };
+export { activatePlacementButtons };

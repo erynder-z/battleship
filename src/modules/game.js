@@ -1,7 +1,7 @@
 import renderBoard from './dom';
 import { boards, gameboardFactory } from './gameboard';
 import { setupAI, setupPlayer } from './helpers';
-import { activateButtons } from './interface';
+import { activatePlacementButtons } from './interface';
 import { playerFactory, players } from './player';
 
 const runGame = () => {
@@ -24,7 +24,7 @@ const runGame = () => {
   /*  console.log(p1Board);
   console.log(pAIBoard); */
   renderBoard(p1Board, pAIBoard, player1, playerAI);
-  activateButtons(p1Board, pAIBoard, player1, playerAI);
+  activatePlacementButtons(p1Board, pAIBoard, player1, playerAI);
 };
 
 const gameoverCheck = (board) => {
