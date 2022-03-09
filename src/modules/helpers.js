@@ -62,7 +62,7 @@ const setupAI = (pAIBoard) => {
   })();
 };
 
-const setupPlayer = (p1Board) => {
+/* const setupPlayer = (p1Board) => {
   const placePlayerships = (() => {
     const fleet = [
       {
@@ -122,7 +122,7 @@ const setupPlayer = (p1Board) => {
     );
     fleet.shift();
   })();
-};
+}; */
 
 const getRandomField = () => {
   let randomHoritontal;
@@ -538,4 +538,4 @@ const getCoordinates = (type, alignment, position, board) => {
   return checkIllegalPositions(validCoordinates);
 };
 
-export { getCoordinates, getRandomField, setupAI, setupPlayer };
+export { getCoordinates, getRandomField, setupAI /*  setupPlayer */ };
