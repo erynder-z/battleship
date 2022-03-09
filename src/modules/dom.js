@@ -1,4 +1,5 @@
-import { gameoverCheck, turnAI } from './player';
+import { gameoverCheck } from './game';
+import { turnAI } from './player';
 
 const renderBoard = (p1Board, pAIBoard, player1, playerAI) => {
   const p1board = p1Board;
@@ -83,7 +84,6 @@ const renderBoard = (p1Board, pAIBoard, player1, playerAI) => {
 
     return { p1, pAI };
   };
-  /* console.log(pAIBoard.myFleet[0].isSunk()); */
   createGrids(p1board, pAIboard);
 };
 
