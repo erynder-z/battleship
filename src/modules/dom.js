@@ -32,9 +32,6 @@ const renderBoard = (p1Board, pAIBoard, player1, playerAI) => {
         if (element.hit === true && element.occupied === false) {
           field.classList.add('miss');
         }
-        field.addEventListener('click', () => {
-          // place ship
-        });
         row.appendChild(field);
       });
     }
@@ -84,6 +81,7 @@ const renderBoard = (p1Board, pAIBoard, player1, playerAI) => {
 
     return { p1, pAI };
   };
+
   createGrids(p1board, pAIboard);
 };
 
