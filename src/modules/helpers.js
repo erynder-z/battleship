@@ -1,6 +1,6 @@
 import { gameboard } from './gameboard';
 
-const setupAI = (pAIBoard) => {
+/* const setupAI = (pAIBoard) => {
   const placeAIships = (() => {
     const fleet = [
       {
@@ -60,7 +60,7 @@ const setupAI = (pAIBoard) => {
     );
     fleet.shift();
   })();
-};
+}; */
 
 /* const setupPlayer = (p1Board) => {
   const placePlayerships = (() => {
@@ -536,6 +536,83 @@ const getCoordinates = (type, alignment, position, board) => {
   validCoordinates.push(checkPosition());
   createPosition();
   return checkIllegalPositions(validCoordinates);
+};
+
+const setupAI = (pAIBoard) => {
+  const align = ['vertical', 'horizontal'];
+  const random = () => align[Math.floor(Math.random() * align.length)];
+
+  const placeCarrier = () => {
+    pAIBoard.placeShip(
+      'carrier',
+      5,
+      getCoordinates('carrier', random(), getRandomField(), pAIBoard)
+    );
+    if (
+      pAIBoard.myFleet.some((element) => element.type === 'carrier') === false
+    ) {
+      placeCarrier();
+    }
+  };
+
+  const placeBattleship = () => {
+    pAIBoard.placeShip(
+      'battleship',
+      4,
+      getCoordinates('battleship', random(), getRandomField(), pAIBoard)
+    );
+    if (
+      pAIBoard.myFleet.some((element) => element.type === 'battleship') ===
+      false
+    ) {
+      placeBattleship();
+    }
+  };
+
+  const placeCruiser = () => {
+    pAIBoard.placeShip(
+      'cruiser',
+      3,
+      getCoordinates('cruiser', random(), getRandomField(), pAIBoard)
+    );
+    if (
+      pAIBoard.myFleet.some((element) => element.type === 'cruiser') === false
+    ) {
+      placeCruiser();
+    }
+  };
+
+  const placeSubmarine = () => {
+    pAIBoard.placeShip(
+      'submarine',
+      2,
+      getCoordinates('submarine', random(), getRandomField(), pAIBoard)
+    );
+    if (
+      pAIBoard.myFleet.some((element) => element.type === 'submarine') === false
+    ) {
+      placeSubmarine();
+    }
+  };
+
+  const placeDestroyer = () => {
+    pAIBoard.placeShip(
+      'destroyer',
+      2,
+      getCoordinates('destroyer', random(), getRandomField(), pAIBoard)
+    );
+    if (
+      pAIBoard.myFleet.some((element) => element.type === 'destroyer') === false
+    ) {
+      placeDestroyer();
+    }
+  };
+
+  placeCarrier();
+  placeBattleship();
+  placeCruiser();
+  placeSubmarine();
+  placeDestroyer();
 };
 
 export { getCoordinates, getRandomField, setupAI /*  setupPlayer */ };
