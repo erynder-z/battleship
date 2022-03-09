@@ -61,6 +61,10 @@ const activateButtons = (p1Board, pAIBoard, player1, playerAI) => {
           return;
         }
 
+        if (p1Board.myFleet.length === 5) {
+          alignmentBtn.remove();
+        }
+
         renderBoard(p1Board, pAIBoard, player1, playerAI);
       });
     });
