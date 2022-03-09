@@ -92,3 +92,13 @@ body {
 .hit {
   background-color: seagreen;
 }
+
+.alignment {
+  height: 10vh;
+  width: 10vh;
+  background-color: rgb(211, 175, 245);
+}
+
+.hover {
+  background-color: aqua;
+}
