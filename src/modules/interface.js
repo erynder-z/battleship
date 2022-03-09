@@ -38,7 +38,7 @@ const activateButtons = (p1Board, pAIBoard, player1, playerAI) => {
     placePlayerShips(destroyerBtn.innerText.toLowerCase(), 2, destroyerBtn);
   });
 
-  function placePlayerShips(shipname, length, btn) {
+  const placePlayerShips = (shipname, length, btn) => {
     p1info.innerText = `place your ${shipname}`;
     const fields = document.querySelectorAll('.field-p1');
     fields.forEach((field) => {
@@ -68,7 +68,7 @@ const activateButtons = (p1Board, pAIBoard, player1, playerAI) => {
         renderBoard(p1Board, pAIBoard, player1, playerAI);
       });
     });
-  }
+  };
 };
 
 export { activateButtons };
