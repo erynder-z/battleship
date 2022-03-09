@@ -1,5 +1,8 @@
 import renderBoard from './dom';
+import { runGame } from './game';
 import { getCoordinates } from './helpers';
+
+const p1info = document.getElementById('p1info');
 
 const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
   const alignmentBtn = document.getElementById('alignment');
@@ -8,7 +11,6 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
   const cruiserBtn = document.getElementById('cruiser');
   const submarineBtn = document.getElementById('submarine');
   const destroyerBtn = document.getElementById('destroyer');
-  const p1info = document.getElementById('p1info');
 
   alignmentBtn.addEventListener('click', () => {
     if (alignmentBtn.innerText === 'horizontal') {
@@ -71,4 +73,13 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
   };
 };
 
-export { activatePlacementButtons };
+const activateResetButton = () => {
+  const resetBtn = document.getElementById('reset');
+
+  resetBtn.addEventListener('click', () => {
+    runGame();
+    p1info.innerText = '';
+  });
+};
+
+export { activatePlacementButtons, activateResetButton };
