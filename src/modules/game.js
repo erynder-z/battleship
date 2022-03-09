@@ -1,6 +1,7 @@
 import renderBoard from './dom';
 import { boards, gameboardFactory } from './gameboard';
 import { setupAI, setupPlayer } from './helpers';
+import { activateButtons } from './interface';
 import { playerFactory, players } from './player';
 
 const runGame = () => {
@@ -17,12 +18,13 @@ const runGame = () => {
   players.push(playerAI);
 
   setupAI(pAIBoard);
-  setupPlayer(p1Board);
+
   /* console.log(player1); */
   /* console.log(playerAI); */
   /*  console.log(p1Board);
   console.log(pAIBoard); */
   renderBoard(p1Board, pAIBoard, player1, playerAI);
+  activateButtons(p1Board, pAIBoard, player1, playerAI);
 };
 
 const gameoverCheck = (board) => {
