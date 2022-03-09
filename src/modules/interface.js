@@ -69,6 +69,46 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
 
         renderBoard(p1Board, pAIBoard, player1, playerAI);
       });
+
+      field.addEventListener('mouseover', () => {
+        hoverEffect(pos);
+      });
+      field.addEventListener('mouseout', () => {
+        hoverEffect(pos);
+      });
+
+      function hoverEffect(pos) {
+        const align = document.getElementById('alignment').textContent;
+        const position = [...pos];
+        const claimed = [];
+
+        if (align === 'horizontal') {
+          for (let i = 0; i < length; i++) {
+            const addition = position[1] + 1;
+            const arr = position.splice(1, 1, addition);
+            claimed.push([position[0], arr[0]]);
+          }
+        } else if (align === 'vertical') {
+          for (let i = 0; i < length; i++) {
+            const addition = position[0] + 1;
+            const arr = position.splice(0, 1, addition);
+            claimed.push([arr[0], position[1]]);
+          }
+        }
+        claimed.length = length;
+
+        claimed.forEach((item) => {
+          const vertical = item[0];
+          const horizontal = item[1];
+          const board = document.querySelector('.grid-p1');
+          const row = board.querySelector(`#p1-row${vertical}`);
+          const element = row.querySelector(
+            `#p1-row${vertical}-field${horizontal}`
+          );
+
+          element.classList.toggle('hover');
+        });
+      }
     });
   };
 };
