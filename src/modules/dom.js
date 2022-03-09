@@ -1,4 +1,4 @@
-import { turnAI } from './player';
+import { gameoverCheck, turnAI } from './player';
 
 const renderBoard = (p1Board, pAIBoard, player1, playerAI) => {
   const p1board = p1Board;
@@ -65,7 +65,9 @@ const renderBoard = (p1Board, pAIBoard, player1, playerAI) => {
             field.classList.contains('miss') === false &&
             field.classList.contains('hit') === false
           ) {
+            gameoverCheck(p1Board);
             turnAI(pAI);
+            gameoverCheck(pAIBoard);
             renderBoard(p1Board, pAIBoard, p1, pAI);
           }
 
@@ -81,7 +83,7 @@ const renderBoard = (p1Board, pAIBoard, player1, playerAI) => {
 
     return { p1, pAI };
   };
-  /*  console.log(pAIBoard.myFleet[0].isSunk()); */
+  /* console.log(pAIBoard.myFleet[0].isSunk()); */
   createGrids(p1board, pAIboard);
 };
 
