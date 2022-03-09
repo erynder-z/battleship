@@ -97,4 +97,12 @@ const turnAI = (pAI) => {
   return pAI;
 };
 
-export { playerFactory, players, turnAI };
+const gameoverCheck = (board) => {
+  const allAreTrue = (board) =>
+    board.myFleet.every((ship) => ship.isSunk() === true);
+  if (allAreTrue(board) === true) {
+    console.log(`${board.id}has won the game`);
+  }
+};
+
+export { playerFactory, players, turnAI, gameoverCheck };
