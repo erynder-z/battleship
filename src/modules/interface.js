@@ -102,11 +102,12 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
           const horizontal = item[1];
           const board = document.querySelector('.grid-p1');
           const row = board.querySelector(`#p1-row${vertical}`);
-          const element = row.querySelector(
-            `#p1-row${vertical}-field${horizontal}`
-          );
-
-          element.classList.toggle('hover');
+          if (vertical <= 9 && horizontal <= 9) {
+            const element = row.querySelector(
+              `#p1-row${vertical}-field${horizontal}`
+            );
+            element.classList.toggle('hover');
+          }
         });
       }
     });
