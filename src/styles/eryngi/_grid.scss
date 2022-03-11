@@ -42,6 +42,13 @@ $layout-values: flex-start, flex-end, center, space-between, space-around;
   }
 }
 
+// align items classes
+@each $val in $layout-values {
+  .align-#{$val} {
+    align-items: $val;
+  }
+}
+
 // col classes
 @include xs {
   @for $i from 1 through $grid-columns {
