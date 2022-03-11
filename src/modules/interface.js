@@ -1,10 +1,8 @@
 import renderBoard from './dom';
-import { runGame } from './game';
 import { getCoordinates } from './helpers';
 
-const p1info = document.getElementById('p1info');
-
 const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
+  const p1info = document.getElementById('p1info');
   const alignmentBtn = document.getElementById('alignment');
   const carrierBtn = document.getElementById('carrier');
   const battleshipBtn = document.getElementById('battleship');
@@ -57,14 +55,14 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
 
         if (p1Board.myFleet.some((element) => element.type === shipname)) {
           p1info.innerText = '';
-          btn.remove();
+          btn.classList.add('hidden');
         } else {
           alert('unable to place here. try again!');
           return;
         }
 
         if (p1Board.myFleet.length === 5) {
-          alignmentBtn.remove();
+          alignmentBtn.classList.add('hidden');
         }
 
         renderBoard(p1Board, pAIBoard, player1, playerAI);
@@ -118,8 +116,7 @@ const activateResetButton = () => {
   const resetBtn = document.getElementById('reset');
 
   resetBtn.addEventListener('click', () => {
-    runGame();
-    p1info.innerText = '';
+    location.reload();
   });
 };
 
