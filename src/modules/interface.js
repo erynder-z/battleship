@@ -19,22 +19,27 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
   });
 
   carrierBtn.addEventListener('click', () => {
+    renderBoard(p1Board, pAIBoard);
     placePlayerShips(carrierBtn.innerText.toLowerCase(), 5, carrierBtn);
   });
 
   battleshipBtn.addEventListener('click', () => {
+    renderBoard(p1Board, pAIBoard);
     placePlayerShips(battleshipBtn.innerText.toLowerCase(), 4, battleshipBtn);
   });
 
   cruiserBtn.addEventListener('click', () => {
+    renderBoard(p1Board, pAIBoard);
     placePlayerShips(cruiserBtn.innerText.toLowerCase(), 3, cruiserBtn);
   });
 
   submarineBtn.addEventListener('click', () => {
+    renderBoard(p1Board, pAIBoard);
     placePlayerShips(submarineBtn.innerText.toLowerCase(), 3, submarineBtn);
   });
 
   destroyerBtn.addEventListener('click', () => {
+    renderBoard(p1Board, pAIBoard);
     placePlayerShips(destroyerBtn.innerText.toLowerCase(), 2, destroyerBtn);
   });
 
