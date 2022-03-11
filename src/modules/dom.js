@@ -1,4 +1,5 @@
 import { gameoverCheck } from './game';
+import { reportSunkShip } from './interface';
 import { turnAI } from './player';
 
 const renderBoard = (p1Board, pAIBoard, player1, playerAI) => {
@@ -65,6 +66,7 @@ const renderBoard = (p1Board, pAIBoard, player1, playerAI) => {
           ) {
             gameoverCheck(p1Board);
             turnAI(pAI);
+            reportSunkShip(p1Board);
             gameoverCheck(pAIBoard);
             renderBoard(p1Board, pAIBoard, p1, pAI);
           }

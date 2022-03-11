@@ -136,4 +136,12 @@ const activateResetButton = () => {
   });
 };
 
-export { activatePlacementButtons, activateResetButton };
+const reportSunkShip = (board) => {
+  board.myFleet.forEach((ship) => {
+    if (ship.isSunk() === true) {
+      document.getElementById(ship.type).classList.add('sunk');
+    }
+  });
+};
+
+export { activatePlacementButtons, activateResetButton, reportSunkShip };
