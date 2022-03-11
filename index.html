@@ -8,7 +8,75 @@
     <title>Battleship</title>
   </head>
   <body>
-    <button id="board">board</button>
-    <button id="ship1">ship1</button><button id="ship2">ship2</button>
+    <div class="board-container">
+      <div class="pAI-container hidden">
+        <h2>AI</h2>
+        <div id="pAIBoard" class="game-grid grid-pAI"></div>
+      </div>
+      <div class="p1-container">
+        <h2>Player 1</h2>
+        <div id="p1Board" class="game-grid grid-p1"></div>
+        <div class="info-container">
+          <div id="alignment" class="alignment">vertical</div>
+          <div id="p1info"></div>
+        </div>
+        <div class="p1-fleet-wrapper">
+          <h2 class="fleet-heading mb-2">Your Fleet</h2>
+          <div class="p1-fleet-container row justify-center">
+            <div class="fleet col-12-xs col-5-sm col-2-xl m-1">
+              <div class="card">
+                <h3 class="card-title">Carrier</h3>
+                <p>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Ratione, quis?
+                </p>
+                <button id="carrier">Carrier</button>
+              </div>
+            </div>
+            <div class="fleet col-12-xs col-5-sm col-2-xl m-1">
+              <div class="card">
+                <h3 class="card-title">Battleship</h3>
+                <p>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Ratione, quis?
+                </p>
+                <button id="battleship">Battleship</button>
+              </div>
+            </div>
+            <div class="fleet col-12-xs col-5-sm col-2-xl m-1">
+              <div class="card">
+                <h3 class="card-title">Cruiser</h3>
+                <p>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Ratione, quis?
+                </p>
+                <button id="cruiser">Cruiser</button>
+              </div>
+            </div>
+            <div class="fleet col-12-xs col-5-sm col-2-xl m-1">
+              <div class="card">
+                <h3 class="card-title">Submarine</h3>
+                <p>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Ratione, quis?
+                </p>
+                <button id="submarine">Submarine</button>
+              </div>
+            </div>
+            <div class="fleet col-12-xs col-5-sm col-2-xl m-1">
+              <div class="card">
+                <h3 class="card-title">Destroyer</h3>
+                <p>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Ratione, quis?
+                </p>
+                <button id="destroyer">Destroyer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="reset">Reset</button>
+    </div>
   </body>
 </html>
