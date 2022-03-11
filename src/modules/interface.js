@@ -9,11 +9,11 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
   const alignmentBtn = document.getElementById('alignment');
   /* const p1FleetContainer = document.querySelector('.p1-fleet-container'); */
   const p1Fleet = document.querySelector('.p1-fleet-wrapper');
-  const carrierBtn = document.getElementById('carrier');
-  const battleshipBtn = document.getElementById('battleship');
-  const cruiserBtn = document.getElementById('cruiser');
-  const submarineBtn = document.getElementById('submarine');
-  const destroyerBtn = document.getElementById('destroyer');
+  const carrierBtn = document.getElementById('carrierButton');
+  const battleshipBtn = document.getElementById('battleshipButton');
+  const cruiserBtn = document.getElementById('cruiserButton');
+  const submarineBtn = document.getElementById('submarineButton');
+  const destroyerBtn = document.getElementById('destroyerButton');
 
   alignmentBtn.addEventListener('click', () => {
     if (alignmentBtn.innerText === 'horizontal') {
@@ -66,6 +66,8 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
         if (p1Board.myFleet.some((element) => element.type === shipname)) {
           p1info.innerText = '';
           btn.classList.add('hidden');
+          const element = document.getElementById(`${shipname}`);
+          element.classList.add('placed');
         } else {
           alert('unable to place here. try again!');
           return;
