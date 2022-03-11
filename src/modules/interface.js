@@ -33,7 +33,7 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
   });
 
   submarineBtn.addEventListener('click', () => {
-    placePlayerShips(submarineBtn.innerText.toLowerCase(), 2, submarineBtn);
+    placePlayerShips(submarineBtn.innerText.toLowerCase(), 3, submarineBtn);
   });
 
   destroyerBtn.addEventListener('click', () => {

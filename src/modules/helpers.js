@@ -34,7 +34,7 @@ const getCoordinates = (type, alignment, position, board) => {
     },
     {
       type: 'submarine',
-      length: 2,
+      length: 3,
     },
     {
       type: 'destroyer',
@@ -263,15 +263,25 @@ const getCoordinates = (type, alignment, position, board) => {
       type: 'submarine',
       orientation: 'horizontal',
       positions: [
+        [0, 8],
         [0, 9],
+        [1, 8],
         [1, 9],
+        [2, 8],
         [2, 9],
+        [3, 8],
         [3, 9],
+        [4, 8],
         [4, 9],
+        [5, 8],
         [5, 9],
+        [6, 8],
         [6, 9],
+        [7, 8],
         [7, 9],
+        [8, 8],
         [8, 9],
+        [9, 8],
         [9, 9],
       ],
     },
@@ -279,6 +289,16 @@ const getCoordinates = (type, alignment, position, board) => {
       type: 'submarine',
       orientation: 'vertical',
       positions: [
+        [8, 0],
+        [8, 1],
+        [8, 2],
+        [8, 3],
+        [8, 4],
+        [8, 5],
+        [8, 6],
+        [8, 7],
+        [8, 8],
+        [8, 9],
         [9, 0],
         [9, 1],
         [9, 2],
@@ -461,7 +481,7 @@ const setupAI = (pAIBoard) => {
   const placeSubmarine = () => {
     pAIBoard.placeShip(
       'submarine',
-      2,
+      3,
       getCoordinates('submarine', random(), getRandomField(), pAIBoard)
     );
     if (
