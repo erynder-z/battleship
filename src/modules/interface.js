@@ -97,7 +97,7 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
       });
 
       function hoverEffect(pos) {
-        const align = document.getElementById('alignment').textContent;
+        const align = document.getElementById('alignment').innerText;
         const position = [...pos];
         const claimed = [];
 
