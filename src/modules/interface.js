@@ -3,6 +3,7 @@ import { getCoordinates } from './helpers';
 
 const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
   const p1info = document.getElementById('p1info');
+  const pAIContainer = document.querySelector('.pAI-container');
   const alignmentBtn = document.getElementById('alignment');
   const carrierBtn = document.getElementById('carrier');
   const battleshipBtn = document.getElementById('battleship');
@@ -68,6 +69,7 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
 
         if (p1Board.myFleet.length === 5) {
           alignmentBtn.classList.add('hidden');
+          pAIContainer.classList.remove('hidden');
         }
 
         renderBoard(p1Board, pAIBoard, player1, playerAI);
