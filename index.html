@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="main.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/cc65f27d3f.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Battleship</title>
   </head>
   <body>
@@ -15,9 +19,14 @@
       </div>
       <div class="p1-container">
         <h2 id="p1info" class="row justify-center m-2">Deploy your fleet!</h2>
+
         <div id="p1Board" class="game-grid grid-p1"></div>
-        <div class="info-container row justify-center m-2">
-          <div id="alignment" class="alignment">vertical</div>
+        <div
+          id="infoContainer"
+          class="info-container d-f fd-c align-center justify-center p-1 m-2"
+        >
+          <div id="alignment" class="alignment">horizontal</div>
+          <div id="alignmentIcon" class="alignment-icon-horiz"></div>
         </div>
         <div class="p1-fleet-wrapper">
           <h2 class="fleet-heading row justify-center">Your Fleet</h2>
