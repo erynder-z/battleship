@@ -56,10 +56,25 @@ const renderBoard = (p1Board, pAIBoard, player1, playerAI) => {
           field.classList.add('miss');
         }
         field.addEventListener('click', () => {
-          // attack field
           const vert = element.vertical;
           const horiz = element.horizontal;
+          // attack
           p1.attack([vert, horiz]);
+          // select a random ship and from the interface and let it "fire"
+          const parentSelector = document.querySelector('.p1-fleet-container');
+          const random = Math.floor(
+            1 + Math.random() * parentSelector.childElementCount
+          );
+          const child = document.querySelector(
+            `.p1-fleet-container>div:nth-child(${random})`
+          );
+          if (child) {
+            child.classList.add('fire');
+            setTimeout(() => {
+              child.classList.remove('fire');
+            }, 100);
+          }
+
           if (
             field.classList.contains('miss') === false &&
             field.classList.contains('hit') === false

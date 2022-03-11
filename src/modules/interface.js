@@ -148,6 +148,11 @@ const reportSunkShip = (board) => {
   board.myFleet.forEach((ship) => {
     if (ship.isSunk() === true) {
       document.getElementById(ship.type).classList.add('sunk');
+      // get the closest .fleet-element to prefent it from being transformed when ship is sunk
+      const closestElement = document
+        .getElementById(ship.type)
+        .closest('.fleet');
+      closestElement.style.transform = 'none';
     }
   });
 };
