@@ -2,9 +2,13 @@ import renderBoard from './dom';
 import { getCoordinates } from './helpers';
 
 const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
+  const boardContainer = document.querySelector('.board-container');
   const p1info = document.getElementById('p1info');
+  const fleetHeading = document.querySelector('.fleet-heading');
   const pAIContainer = document.querySelector('.pAI-container');
   const alignmentBtn = document.getElementById('alignment');
+  /* const p1FleetContainer = document.querySelector('.p1-fleet-container'); */
+  const p1Fleet = document.querySelector('.p1-fleet-wrapper');
   const carrierBtn = document.getElementById('carrier');
   const battleshipBtn = document.getElementById('battleship');
   const cruiserBtn = document.getElementById('cruiser');
@@ -70,6 +74,9 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
         if (p1Board.myFleet.length === 5) {
           alignmentBtn.classList.add('hidden');
           pAIContainer.classList.remove('hidden');
+          p1Fleet.classList.add('fleet-set');
+          boardContainer.classList.add('board-set');
+          fleetHeading.classList.add('hidden');
         }
 
         renderBoard(p1Board, pAIBoard, player1, playerAI);

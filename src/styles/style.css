@@ -8,6 +8,14 @@ body {
     'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
+/* .p1-container {
+  max-height: fit-content;
+} */
+
+.info-container {
+  display: flex;
+}
+
 .board-container {
   display: flex;
   justify-content: center;
@@ -90,4 +98,29 @@ body {
 
 .hover {
   background-color: aqua;
+}
+
+.hidden {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .board-set {
+    position: relative;
+    right: 10rem;
+  }
+  .fleet-set {
+    position: absolute;
+    top: 1rem;
+    right: -10rem;
+  }
+
+  .fleet-set > .p1-fleet-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fleet-set > .p1-fleet-container > .fleet {
+    width: 50%;
+  }
 }
