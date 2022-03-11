@@ -7,7 +7,6 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
   const fleetHeading = document.querySelector('.fleet-heading');
   const pAIContainer = document.querySelector('.pAI-container');
   const alignmentBtn = document.getElementById('alignment');
-  /* const p1FleetContainer = document.querySelector('.p1-fleet-container'); */
   const p1Fleet = document.querySelector('.p1-fleet-wrapper');
   const carrierBtn = document.getElementById('carrierButton');
   const battleshipBtn = document.getElementById('battleshipButton');
@@ -25,31 +24,36 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
 
   carrierBtn.addEventListener('click', () => {
     renderBoard(p1Board, pAIBoard);
-    placePlayerShips(carrierBtn.innerText.toLowerCase(), 5, carrierBtn);
+    placePlayerShips(carrierBtn.parentNode.id.toLowerCase(), 5, carrierBtn);
   });
 
   battleshipBtn.addEventListener('click', () => {
     renderBoard(p1Board, pAIBoard);
-    placePlayerShips(battleshipBtn.innerText.toLowerCase(), 4, battleshipBtn);
+    placePlayerShips(
+      battleshipBtn.parentNode.id.toLowerCase(),
+      4,
+      battleshipBtn
+    );
   });
 
   cruiserBtn.addEventListener('click', () => {
     renderBoard(p1Board, pAIBoard);
-    placePlayerShips(cruiserBtn.innerText.toLowerCase(), 3, cruiserBtn);
+    placePlayerShips(cruiserBtn.parentNode.id.toLowerCase(), 3, cruiserBtn);
   });
 
   submarineBtn.addEventListener('click', () => {
     renderBoard(p1Board, pAIBoard);
-    placePlayerShips(submarineBtn.innerText.toLowerCase(), 3, submarineBtn);
+    placePlayerShips(submarineBtn.parentNode.id.toLowerCase(), 3, submarineBtn);
   });
 
   destroyerBtn.addEventListener('click', () => {
     renderBoard(p1Board, pAIBoard);
-    placePlayerShips(destroyerBtn.innerText.toLowerCase(), 2, destroyerBtn);
+    /* placePlayerShips(destroyerBtn.innerText.toLowerCase(), 2, destroyerBtn); */
+    placePlayerShips(destroyerBtn.parentNode.id.toLowerCase(), 2, destroyerBtn);
   });
 
   const placePlayerShips = (shipname, length, btn) => {
-    p1info.innerText = `place your ${shipname}`;
+    p1info.innerText = `Place your ${shipname}`;
     const fields = document.querySelectorAll('.field-p1');
     fields.forEach((field) => {
       const vert = parseInt(field.id[6]);
@@ -64,7 +68,7 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
         );
 
         if (p1Board.myFleet.some((element) => element.type === shipname)) {
-          p1info.innerText = '';
+          p1info.innerText = 'Deploy the rest of your fleet!';
           btn.classList.add('hidden');
           const element = document.getElementById(`${shipname}`);
           element.classList.add('placed');
@@ -74,6 +78,7 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
         }
 
         if (p1Board.myFleet.length === 5) {
+          p1info.innerText = 'Your fleet';
           alignmentBtn.classList.add('hidden');
           pAIContainer.classList.remove('hidden');
           p1Fleet.classList.add('fleet-set');

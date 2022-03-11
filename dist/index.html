@@ -10,73 +10,84 @@
   <body>
     <div class="board-container">
       <div class="pAI-container hidden">
-        <h2>AI</h2>
+        <h2 class="row justify-center m-2">Enemy fleet</h2>
         <div id="pAIBoard" class="game-grid grid-pAI"></div>
       </div>
       <div class="p1-container">
-        <h2>Player 1</h2>
+        <h2 id="p1info" class="row justify-center m-2">Deploy your fleet!</h2>
         <div id="p1Board" class="game-grid grid-p1"></div>
-        <div class="info-container">
+        <div class="info-container row justify-center m-2">
           <div id="alignment" class="alignment">vertical</div>
-          <div id="p1info"></div>
         </div>
         <div class="p1-fleet-wrapper">
-          <h2 class="fleet-heading mb-2">Your Fleet</h2>
+          <h2 class="fleet-heading row justify-center">Your Fleet</h2>
           <div class="p1-fleet-container row justify-center">
             <div class="fleet col-12-xs col-5-sm col-2-xl m-1">
-              <div class="card">
+              <div id="carrier" class="card">
                 <h3 class="card-title">Carrier</h3>
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                   Ratione, quis?
                 </p>
-                <button id="carrier">Carrier</button>
+                <button id="carrierButton" class="btn-primary text-white">
+                  place
+                </button>
               </div>
             </div>
             <div class="fleet col-12-xs col-5-sm col-2-xl m-1">
-              <div class="card">
+              <div id="battleship" class="card">
                 <h3 class="card-title">Battleship</h3>
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                   Ratione, quis?
                 </p>
-                <button id="battleship">Battleship</button>
+                <button id="battleshipButton" class="btn-primary text-white">
+                  place
+                </button>
               </div>
             </div>
             <div class="fleet col-12-xs col-5-sm col-2-xl m-1">
-              <div class="card">
+              <div id="cruiser" class="card">
                 <h3 class="card-title">Cruiser</h3>
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                   Ratione, quis?
                 </p>
-                <button id="cruiser">Cruiser</button>
+                <button id="cruiserButton" class="btn-primary text-white">
+                  place
+                </button>
               </div>
             </div>
             <div class="fleet col-12-xs col-5-sm col-2-xl m-1">
-              <div class="card">
+              <div id="submarine" class="card">
                 <h3 class="card-title">Submarine</h3>
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                   Ratione, quis?
                 </p>
-                <button id="submarine">Submarine</button>
+                <button id="submarineButton" class="btn-primary text-white">
+                  place
+                </button>
               </div>
             </div>
             <div class="fleet col-12-xs col-5-sm col-2-xl m-1">
-              <div class="card">
+              <div id="destroyer" class="card">
                 <h3 class="card-title">Destroyer</h3>
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                   Ratione, quis?
                 </p>
-                <button id="destroyer">Destroyer</button>
+                <button id="destroyerButton" class="btn-primary text-white">
+                  place
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <button id="reset">Reset</button>
+      <button id="reset" class="btn-secondary text-white m-2 br-0">
+        Reset
+      </button>
     </div>
   </body>
 </html>
