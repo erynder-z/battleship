@@ -6,6 +6,7 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
   const p1info = document.getElementById('p1info');
   const fleetHeading = document.querySelector('.fleet-heading');
   const pAIContainer = document.querySelector('.pAI-container');
+  const infoContainer = document.getElementById('infoContainer');
   const alignmentBtn = document.getElementById('alignment');
   const p1Fleet = document.querySelector('.p1-fleet-wrapper');
   const carrierBtn = document.getElementById('carrierButton');
@@ -14,11 +15,13 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
   const submarineBtn = document.getElementById('submarineButton');
   const destroyerBtn = document.getElementById('destroyerButton');
 
-  alignmentBtn.addEventListener('click', () => {
+  infoContainer.addEventListener('click', () => {
     if (alignmentBtn.innerText === 'horizontal') {
       alignmentBtn.innerText = 'vertical';
+      infoContainer.classList.toggle('vert');
     } else if (alignmentBtn.innerText === 'vertical') {
       alignmentBtn.innerText = 'horizontal';
+      infoContainer.classList.toggle('vert');
     }
   });
 
@@ -79,7 +82,7 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
 
         if (p1Board.myFleet.length === 5) {
           p1info.innerText = 'Your fleet';
-          alignmentBtn.classList.add('hidden');
+          infoContainer.classList.add('hidden');
           pAIContainer.classList.remove('hidden');
           p1Fleet.classList.add('fleet-set');
           boardContainer.classList.add('board-set');
