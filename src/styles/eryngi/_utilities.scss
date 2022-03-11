@@ -147,6 +147,13 @@ $utilities: (
       'i-b': inline-block,
     ),
   ),
+  'flex-direction': (
+    'prefix': 'fd',
+    'values': (
+      'c': column,
+      'r': row,
+    ),
+  ),
   'font-size': (
     'prefix': 'font',
     'values': (
