@@ -1,5 +1,5 @@
 :root {
-  --background: #f7fbfc;
+  --background: #f4f9f9;
   --playerBoard: #bad7df;
   --AIboard: #ffe2e2;
   --fleet: #07679f5e;
@@ -20,7 +20,7 @@
 body {
   padding: 0;
   margin: 0;
-  height: 100vh;
+  /* height: 100vh; */
   background-color: var(--background);
   font-family: 'Open Sans', sans-serif, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
@@ -41,7 +41,7 @@ img {
 }
 
 .board-container {
-  height: 100vh;
+  /*   height: 100vh; */
   max-width: 100vw;
 }
 
@@ -191,7 +191,7 @@ img {
   }
   .fleet-set {
     position: absolute;
-    top: 3rem;
+    top: 0rem;
     right: -20rem;
     transition: all 50ms linear;
   }
