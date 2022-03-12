@@ -57,6 +57,7 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
 
   const placePlayerShips = (shipname, length, btn) => {
     p1info.innerText = `Place your ${shipname}`;
+    p1info.classList.add('selected');
     const fields = document.querySelectorAll('.field-p1');
     fields.forEach((field) => {
       const vert = parseInt(field.id[6]);
@@ -75,6 +76,7 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
           btn.classList.add('hidden');
           const element = document.getElementById(`${shipname}`);
           element.classList.add('placed');
+          p1info.classList.remove('selected');
         } else {
           alert('unable to place here. try again!');
           return;
