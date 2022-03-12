@@ -19,9 +19,9 @@ const runGame = () => {
 
   setupAI(pAIBoard);
 
-  /* console.log(player1); */
-  /* console.log(playerAI); */
-  /*   console.log(p1Board);
+  /* console.log(player1);
+  console.log(playerAI);
+  console.log(p1Board);
   console.log(pAIBoard); */
   renderBoard(p1Board, pAIBoard, player1, playerAI);
   activatePlacementButtons(p1Board, pAIBoard, player1, playerAI);
@@ -32,7 +32,7 @@ const gameoverCheck = (board) => {
   const allAreTrue = (board) =>
     board.myFleet.every((ship) => ship.isSunk() === true);
   if (allAreTrue(board) === true) {
-    console.log(`${board.id}has won the game`);
+    console.log(`${board.id} was defeated`);
   }
 };
 
