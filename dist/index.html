@@ -14,11 +14,13 @@
   <body>
     <div class="board-container">
       <div class="pAI-container hidden">
-        <h2 class="row justify-center m-2">Enemy fleet</h2>
+        <h2 class="heading row justify-center m-2">Enemy fleet</h2>
         <div id="pAIBoard" class="game-grid grid-pAI"></div>
       </div>
       <div class="p1-container">
-        <h2 id="p1info" class="row justify-center m-2">Deploy your fleet!</h2>
+        <h2 id="p1info" class="heading row justify-center m-2">
+          Deploy your fleet!
+        </h2>
 
         <div id="p1Board" class="game-grid grid-p1"></div>
         <div
@@ -31,7 +33,9 @@
         <div class="p1-fleet-wrapper">
           <h2 class="fleet-heading row justify-center">Your Fleet</h2>
           <div class="p1-fleet-container row justify-center">
-            <div class="fleet col-12-xs col-5-sm col-2-xl m-1">
+            <div
+              class="fleet col-12-xs col-5-sm col-2-xl m-1 row justify-center"
+            >
               <div id="carrier" class="card">
                 <h3 class="card-title">Carrier</h3>
                 <img src="../src/icons/aircraft.png" alt="carrier" />
@@ -40,7 +44,9 @@
                 </button>
               </div>
             </div>
-            <div class="fleet col-12-xs col-5-sm col-2-xl m-1">
+            <div
+              class="fleet col-12-xs col-5-sm col-2-xl m-1 row justify-center"
+            >
               <div id="battleship" class="card">
                 <h3 class="card-title">Battleship</h3>
                 <img src="../src/icons/battleship.png" alt="carrier" />
@@ -49,7 +55,9 @@
                 </button>
               </div>
             </div>
-            <div class="fleet col-12-xs col-5-sm col-2-xl m-1">
+            <div
+              class="fleet col-12-xs col-5-sm col-2-xl m-1 row justify-center"
+            >
               <div id="cruiser" class="card">
                 <h3 class="card-title">Cruiser</h3>
                 <img src="../src/icons/cruiser.png" alt="carrier" />
@@ -58,7 +66,9 @@
                 </button>
               </div>
             </div>
-            <div class="fleet col-12-xs col-5-sm col-2-xl m-1">
+            <div
+              class="fleet col-12-xs col-5-sm col-2-xl m-1 row justify-center"
+            >
               <div id="submarine" class="card">
                 <h3 class="card-title">Submarine</h3>
                 <img src="../src/icons/submarine.png" alt="carrier" />
@@ -67,7 +77,9 @@
                 </button>
               </div>
             </div>
-            <div class="fleet col-12-xs col-5-sm col-2-xl m-1">
+            <div
+              class="fleet col-12-xs col-5-sm col-2-xl m-1 row justify-center"
+            >
               <div id="destroyer" class="card">
                 <h3 class="card-title">Destroyer</h3>
                 <img src="../src/icons/destroyer.png" alt="carrier" />
@@ -79,7 +91,9 @@
           </div>
         </div>
       </div>
-      <button id="reset" class="btn-error text-white m-2 br-0">Reset</button>
+      <button id="reset" class="reset btn-error text-white mt-2 mb-2">
+        Reset
+      </button>
     </div>
   </body>
 </html>
