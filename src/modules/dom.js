@@ -29,9 +29,11 @@ const renderBoard = (p1Board, pAIBoard, player1, playerAI) => {
         }
         if (element.hit === true && element.occupied === true) {
           field.classList.add('hit');
+          field.innerText = '●';
         }
         if (element.hit === true && element.occupied === false) {
           field.classList.add('miss');
+          field.innerText = '✖';
         }
         row.appendChild(field);
       });
@@ -51,10 +53,13 @@ const renderBoard = (p1Board, pAIBoard, player1, playerAI) => {
         }
         if (element.hit === true && element.occupied === true) {
           field.classList.add('hit');
+          field.innerText = '●';
         }
         if (element.hit === true && element.occupied === false) {
           field.classList.add('miss');
+          field.innerText = '✖';
         }
+
         field.addEventListener('click', () => {
           const vert = element.vertical;
           const horiz = element.horizontal;
