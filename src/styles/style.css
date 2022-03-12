@@ -3,7 +3,7 @@
   --playerBoard: #bad7df;
   --AIboard: #ffe2e2;
   --fleet: #07679f5e;
-  --sunk: #b8405e;
+  --sunk: #d82148;
   --hit: #12cc94;
   --miss: #e23e57;
   --hover: #c40885d7;
@@ -27,6 +27,11 @@ body {
     'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
+img {
+  max-width: auto;
+  height: 5rem;
+}
+
 .info-container {
   display: flex;
 }
@@ -36,6 +41,8 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 100vh;
+  max-width: 100vw;
 }
 
 .game-grid {
@@ -90,10 +97,13 @@ body {
 
 .placed {
   background-color: var(--fleet);
+  transition: all 200ms linear;
+  animation: pulse 5s linear infinite;
 }
 
 .sunk {
   background-color: var(--sunk);
+  transition: all 1000ms linear;
 }
 
 .miss {
@@ -143,15 +153,35 @@ body {
   display: none;
 }
 
-@media only screen and (min-width: 768px) {
+@-webkit-keyframes "pulse" {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    transform: rotate(-2deg);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    transform: rotate(2deg);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    transform: rotate(-2deg);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
   .board-set {
-    position: relative;
-    right: 10rem;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
   }
   .fleet-set {
     position: absolute;
     top: 3rem;
-    right: -10rem;
+    right: -20rem;
   }
 
   .fleet-set > .p1-fleet-container {
@@ -160,6 +190,6 @@ body {
   }
 
   .fleet-set > .p1-fleet-container > .fleet {
-    width: 50%;
+    width: 100%;
   }
 }
