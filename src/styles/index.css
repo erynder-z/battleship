@@ -10,6 +10,10 @@ body {
   font-family: Poppins;
 }
 
+img {
+  max-width: 100%;
+}
+
 .row {
   display: flex;
   flex-flow: row wrap;
@@ -103,6 +107,14 @@ body {
 
 .m-2 {
   margin: 1.5rem;
+}
+
+.mt-2 {
+  margin-top: 1.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 1.5rem;
 }
 
 .fd-c {
