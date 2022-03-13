@@ -1,4 +1,4 @@
-import { gameboardFactory } from './gameboard';
+import { gameboardFactory } from '../modules/gameboard';
 
 let board;
 

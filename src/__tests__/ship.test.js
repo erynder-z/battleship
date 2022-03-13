@@ -1,4 +1,4 @@
-import { shipFactory } from './ship';
+import { shipFactory } from '../modules/ship';
 
 const mockBattleship = shipFactory('battleship', 4, [
   [0, 1],

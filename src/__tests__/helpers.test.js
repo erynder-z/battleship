@@ -1,6 +1,5 @@
-import { myFleet, gameboardFactory, gameboard } from './gameboard';
-import { getCoordinates } from './helpers';
-import { shipFactory } from './ship';
+import { gameboardFactory, gameboard } from '../modules/gameboard';
+import { getCoordinates } from '../modules/helpers';
 
 /* beforeEach(() => {
   const gameboardMock = jest.fn();

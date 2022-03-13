@@ -1,5 +1,5 @@
-import { playerFactory, players } from './player';
-import { boards, gameboardFactory, myFleet } from './gameboard';
+import { playerFactory, players } from '../modules/player';
+import { boards, gameboardFactory } from '../modules/gameboard';
 
 afterEach(() => {
   const clear = () => {
