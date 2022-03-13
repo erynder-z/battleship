@@ -66,35 +66,44 @@ const renderBoard = (p1Board, pAIBoard, player1, playerAI) => {
           // attack
           p1.attack([vert, horiz]);
           // select a random ship and from the interface and let it "fire"
-          const parentSelector = document.querySelector('.p1-fleet-container');
-          const random = Math.floor(
-            1 + Math.random() * parentSelector.childElementCount
-          );
-          const child = document.querySelector(
-            `.p1-fleet-container>div:nth-child(${random})`
-          );
-          if (child) {
-            child.classList.add('fire');
-            setTimeout(() => {
-              child.classList.remove('fire');
-            }, 100);
+          shipFireEffect();
+          turn();
+
+          function shipFireEffect() {
+            const parentSelector = document.querySelector(
+              '.p1-fleet-container'
+            );
+            const random = Math.floor(
+              1 + Math.random() * parentSelector.childElementCount
+            );
+            const child = document.querySelector(
+              `.p1-fleet-container>div:nth-child(${random})`
+            );
+            if (child) {
+              child.classList.add('fire');
+              setTimeout(() => {
+                child.classList.remove('fire');
+              }, 100);
+            }
           }
 
-          if (
-            field.classList.contains('miss') === false &&
-            field.classList.contains('hit') === false
-          ) {
-            gameoverCheck(pAIBoard);
-            turnAI(pAI);
-            reportSunkShip(p1Board);
-            gameoverCheck(p1Board);
-            renderBoard(p1Board, pAIBoard, p1, pAI);
-          }
+          function turn() {
+            if (
+              field.classList.contains('miss') === false &&
+              field.classList.contains('hit') === false
+            ) {
+              gameoverCheck(pAIBoard);
+              turnAI(pAI);
+              reportSunkShip(p1Board);
+              gameoverCheck(p1Board);
+              renderBoard(p1Board, pAIBoard, p1, pAI);
+            }
 
-          if (element.occupied === true) {
-            field.classList.add('hit');
-          } else {
-            field.classList.add('miss');
+            if (element.occupied === true) {
+              field.classList.add('hit');
+            } else {
+              field.classList.add('miss');
+            }
           }
         });
         row.appendChild(field);
