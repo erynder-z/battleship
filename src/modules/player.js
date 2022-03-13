@@ -5,7 +5,7 @@ const players = [];
 const playerFactory = (name, isAI) => {
   if (isAI === true) {
     return {
-      id: 'player2',
+      id: 'Player2',
       name,
       isAI,
       isActive: false,
@@ -69,7 +69,7 @@ const playerFactory = (name, isAI) => {
     };
   }
   return {
-    id: 'player1',
+    id: 'Player1',
     name,
     isActive: true,
     attack(position) {

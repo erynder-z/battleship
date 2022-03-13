@@ -163,6 +163,61 @@ img {
   display: none;
 }
 
+.modal-wrapper {
+  padding: 25px 0 0 25px;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  border: solid 2px black;
+  z-index: 10;
+  background-color: var(--background);
+  width: 500px;
+  max-width: 80%;
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+  display: flex;
+  padding: 10px 15px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--fleet);
+}
+
+.modal-header .title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.modal-body {
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.692);
+  pointer-events: none;
+  transition: 200ms ease-in-out;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
 @-webkit-keyframes "pulse" {
   0% {
     -webkit-transform: scale(1);

@@ -1,7 +1,11 @@
 import renderBoard from './dom';
 import { boards, gameboardFactory } from './gameboard';
 import { setupAI, setupPlayer } from './helpers';
-import { activatePlacementButtons, activateResetButton } from './interface';
+import {
+  activatePlacementButtons,
+  activateResetButton,
+  gameOver,
+} from './interface';
 import { playerFactory, players } from './player';
 
 const runGame = () => {
@@ -10,8 +14,8 @@ const runGame = () => {
   const p1Board = gameboardFactory();
   const pAIBoard = gameboardFactory();
   const gameover = false;
-  p1Board.id = 'player1';
-  pAIBoard.id = 'player2';
+  p1Board.id = 'Player1';
+  pAIBoard.id = 'Player2';
   boards.push(p1Board);
   boards.push(pAIBoard);
   players.push(player1);
@@ -33,6 +37,7 @@ const gameoverCheck = (board) => {
     board.myFleet.every((ship) => ship.isSunk() === true);
   if (allAreTrue(board) === true) {
     console.log(`${board.id} was defeated`);
+    gameOver(board.id);
   }
 };
 

@@ -159,4 +159,28 @@ const reportSunkShip = (board) => {
   });
 };
 
-export { activatePlacementButtons, activateResetButton, reportSunkShip };
+const gameOver = (id) => {
+  const modalBody = document.querySelector('.modal-body');
+  const overlay = document.getElementById('overlay');
+
+  function openModal(modal) {
+    if (modal == null) return;
+    modal.classList.add('active');
+    overlay.classList.add('active');
+  }
+  openModal(modal);
+  modalBody.textContent = `${id} was defeated. 
+  There are no winners in war! `;
+  const resetBtn = document.getElementById('resetBtnModal');
+
+  resetBtn.addEventListener('click', () => {
+    location.reload();
+  });
+};
+
+export {
+  activatePlacementButtons,
+  activateResetButton,
+  reportSunkShip,
+  gameOver,
+};
