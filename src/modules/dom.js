@@ -79,11 +79,15 @@ const renderBoard = (p1Board, pAIBoard, player1, playerAI) => {
             const child = document.querySelector(
               `.p1-fleet-container>div:nth-child(${random})`
             );
-            if (child) {
-              child.classList.add('fire');
-              setTimeout(() => {
-                child.classList.remove('fire');
-              }, 100);
+            const closestElement = child.firstElementChild;
+
+            child.classList.add('fire');
+            setTimeout(() => {
+              child.classList.remove('fire');
+            }, 100);
+
+            if (closestElement.classList.contains('sunk') === true) {
+              shipFireEffect();
             }
           }
 
