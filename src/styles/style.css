@@ -20,7 +20,6 @@
 body {
   padding: 0;
   margin: 0;
-  /* height: 100vh; */
   background-color: var(--background);
   font-family: 'Open Sans', sans-serif, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
@@ -41,7 +40,6 @@ img {
 }
 
 .board-container {
-  /*   height: 100vh; */
   max-width: 100vw;
 }
 
@@ -163,10 +161,6 @@ img {
   display: none;
 }
 
-.modal-wrapper {
-  padding: 25px 0 0 25px;
-}
-
 .modal {
   position: fixed;
   top: 50%;
@@ -242,7 +236,6 @@ img {
     top: 50%;
     left: 40%;
     transform: translate(-50%, -50%);
-    /* transition: all 50ms linear; */
   }
   .fleet-set {
     position: absolute;
