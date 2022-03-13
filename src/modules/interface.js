@@ -101,6 +101,7 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
       });
 
       function hoverEffect(pos) {
+        // get all fields covered by currently selected ship in real time
         const align = document.getElementById('alignment').innerText;
         const position = [...pos];
         const claimed = [];
