@@ -51,7 +51,6 @@ const activatePlacementButtons = (p1Board, pAIBoard, player1, playerAI) => {
 
   destroyerBtn.addEventListener('click', () => {
     renderBoard(p1Board, pAIBoard);
-    /* placePlayerShips(destroyerBtn.innerText.toLowerCase(), 2, destroyerBtn); */
     placePlayerShips(destroyerBtn.parentNode.id.toLowerCase(), 2, destroyerBtn);
   });
 
