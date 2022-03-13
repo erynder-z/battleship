@@ -51,7 +51,6 @@ const playerFactory = (name, isAI) => {
       },
 
       attack(position) {
-        // attack enemy gameboard
         boards.forEach((board) => {
           if (this.id !== board.id) {
             board.recieveAttack(position);
@@ -73,7 +72,6 @@ const playerFactory = (name, isAI) => {
     name,
     isActive: true,
     attack(position) {
-      // attack enemy gameboard
       boards.forEach((board) => {
         if (this.id !== board.id) {
           board.recieveAttack(position);
