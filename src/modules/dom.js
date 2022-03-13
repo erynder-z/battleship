@@ -84,10 +84,10 @@ const renderBoard = (p1Board, pAIBoard, player1, playerAI) => {
             field.classList.contains('miss') === false &&
             field.classList.contains('hit') === false
           ) {
-            gameoverCheck(p1Board);
+            gameoverCheck(pAIBoard);
             turnAI(pAI);
             reportSunkShip(p1Board);
-            gameoverCheck(pAIBoard);
+            gameoverCheck(p1Board);
             renderBoard(p1Board, pAIBoard, p1, pAI);
           }
 
