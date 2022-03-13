@@ -1,6 +1,6 @@
 import renderBoard from './dom';
 import { boards, gameboardFactory } from './gameboard';
-import { setupAI, setupPlayer } from './helpers';
+import { setupAI } from './helpers';
 import {
   activatePlacementButtons,
   activateResetButton,
@@ -13,7 +13,6 @@ const runGame = () => {
   const playerAI = playerFactory('hal', true);
   const p1Board = gameboardFactory();
   const pAIBoard = gameboardFactory();
-  const gameover = false;
   p1Board.id = 'Player1';
   pAIBoard.id = 'Player2';
   boards.push(p1Board);
@@ -23,10 +22,6 @@ const runGame = () => {
 
   setupAI(pAIBoard);
 
-  /* console.log(player1);
-  console.log(playerAI);
-  console.log(p1Board);
-  console.log(pAIBoard); */
   renderBoard(p1Board, pAIBoard, player1, playerAI);
   activatePlacementButtons(p1Board, pAIBoard, player1, playerAI);
   activateResetButton();
