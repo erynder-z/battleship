@@ -159,7 +159,14 @@ const reportSunkShip = (board) => {
   });
 };
 
-const gameOver = (id) => {
+const gameOver = (loserID) => {
+  if (loserID === 'Player1') {
+    loserID = 'You were';
+  }
+  if (loserID === 'Player2') {
+    loserID = 'AI was';
+  }
+
   const modalBody = document.querySelector('.modal-body');
   const overlay = document.getElementById('overlay');
 
@@ -169,7 +176,7 @@ const gameOver = (id) => {
     overlay.classList.add('active');
   }
   openModal(modal);
-  modalBody.textContent = `${id} was defeated. 
+  modalBody.textContent = `${loserID} defeated. 
   There are no winners in war! `;
   const resetBtn = document.getElementById('resetBtnModal');
 
