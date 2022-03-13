@@ -1,6 +1,7 @@
 import { gameboard } from './gameboard';
 
 const getRandomField = () => {
+  // get a random field on the gameboard
   let randomHoritontal;
   let randomVertical;
   const randomPosition = [];
@@ -17,6 +18,7 @@ const getRandomField = () => {
 };
 
 const getCoordinates = (type, alignment, position, board) => {
+  // returns valid coordinates of all fields needed for the proposed ship placement
   const illegal = board.illegalPositions;
   const validCoordinates = [];
   const fleet = [
@@ -43,6 +45,7 @@ const getCoordinates = (type, alignment, position, board) => {
   ];
 
   const illegalPositions = [
+    // blacklist of positions where a ship can never ne placed
     {
       type: 'carrier',
       orientation: 'horizontal',
@@ -352,12 +355,13 @@ const getCoordinates = (type, alignment, position, board) => {
   illegalPositions[10].positions.push(illegal);
 
   const ship = type;
-  const align = alignment; // horizotal or vertical
+  const align = alignment;
 
   const checkPosition = () => {
-    const selectedField = position; // [0, 1]
+    // check if selected field is inside the game grid
+    const selectedField = position;
 
-    // check of selected field is inside the game grid
+    // reject field if it is blacklisted
     for (let i = 0; i < illegalPositions.length; i++) {
       if (
         illegalPositions[i].type === ship &&
@@ -382,6 +386,8 @@ const getCoordinates = (type, alignment, position, board) => {
     });
 
     const createCoordinates = (() => {
+      // creates the coordinates of all needed fields for selected ship on selected field
+
       // return is no valid position is returned from checkPosition
       if (validCoordinates[0] === null) {
         return;
@@ -415,11 +421,13 @@ const getCoordinates = (type, alignment, position, board) => {
   };
 
   const checkIllegalPositions = (coordinates) => {
+    // check if any of the needed fields is inside the blacklist
     coordinates.forEach((item) => {
       if (JSON.stringify(board.illegalPositions).includes(item)) {
         coordinates = [null];
       }
     });
+    // add all needed fields to blacklist
     if (coordinates !== null) {
       coordinates.forEach((item) => {
         board.illegalPositions.push(item);
@@ -428,9 +436,9 @@ const getCoordinates = (type, alignment, position, board) => {
 
     return coordinates;
   };
-
   validCoordinates.push(checkPosition());
   createPosition();
+  // return the if they passed all checks
   return checkIllegalPositions(validCoordinates);
 };
 
