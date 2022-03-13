@@ -149,8 +149,8 @@ test('AI should only attack fields that are not yet hit', () => {
   const playerAI = playerFactory('hal', true);
   const p1Board = gameboardFactory();
   const pAIBoard = gameboardFactory();
-  p1Board.id = 'player1';
-  pAIBoard.id = 'player2';
+  p1Board.id = 'Player1';
+  pAIBoard.id = 'Player2';
   boards.push(p1Board);
   boards.push(pAIBoard);
   for (let i = 0; i < 10; i++) {
