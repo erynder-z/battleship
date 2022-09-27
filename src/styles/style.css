@@ -55,6 +55,10 @@ img {
   margin: 0 auto;
 }
 
+.p1-container {
+  overflow: hidden;
+}
+
 .grid-p1,
 .grid-pAI {
   position: relative;
@@ -212,7 +216,7 @@ img {
   pointer-events: all;
 }
 
-@-webkit-keyframes "pulse" {
+@keyframes pulse {
   0% {
     -webkit-transform: scale(1);
     transform: scale(1);
